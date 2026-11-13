@@ -1109,9 +1109,10 @@ a:not(.sc-card a):hover,a:not(.sc-card a):focus-visible,button:hover,button:focu
 @media(max-width:768px){
   nav .nav-logo{display:block;}
   .nav-burger{display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;margin-right:-10px;padding:0 10px;background:none;border:0;color:var(--c-ink);}
-  .nav-burger span{display:block;height:1.5px;background:currentColor;border-radius:1px;transition:transform var(--dur-base) var(--ease);}
-  nav.menu-open .nav-burger span:first-child{transform:translateY(3.75px) rotate(45deg);}
-  nav.menu-open .nav-burger span:last-child{transform:translateY(-3.75px) rotate(-45deg);}
+  .nav-burger span{display:block;height:1.5px;background:currentColor;border-radius:1px;transition:transform var(--dur-base) var(--ease),opacity var(--dur-fast);}
+  nav.menu-open .nav-burger span:first-child{transform:translateY(7.5px) rotate(45deg);}
+  nav.menu-open .nav-burger span:nth-child(2){opacity:0;}
+  nav.menu-open .nav-burger span:last-child{transform:translateY(-7.5px) rotate(-45deg);}
   .nav-links{position:fixed;inset:0;z-index:-1;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:var(--space-6);margin:0;padding:var(--page-top) var(--gutter);background:var(--c-bg);list-style:none;opacity:0;visibility:hidden;transition:opacity var(--dur-base) var(--ease),visibility 0s linear var(--dur-base);}
   nav.menu-open .nav-links{opacity:1;visibility:visible;transition-delay:0s;}
   nav .nav-links a{font-size:var(--fs-xl) !important;}
@@ -1143,7 +1144,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
 <nav>
   <a href="#" class="nav-logo" data-page="home" aria-label="Iris — home">Iris<svg class="nav-flower" viewBox="0 0 24 48" fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 12.6 C9.7 9.6 9.5 5.3 12.3 4.4 C15.3 3.6 16.9 6.8 15.3 9.6 C14.5 11 13.5 12 12.6 12.9" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.6 13.3 C9 11.8 5.3 11.4 4.5 13.4 C3.8 15.3 6.4 16.5 9.2 15.9 C10.2 15.7 11 14.7 11.6 13.7" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.6 13.4 C14.6 12.3 18.6 12.1 19.3 14.3 C19.9 16.4 18.4 18.7 16.6 17.7 C15 16.9 13.6 15 12.8 13.9" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.8 14.1 C11 15.7 11.2 18.1 12.6 18.3 C13.8 18.5 13.6 15.9 12.6 14.1" fill="var(--c-iris-petal)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.4 44.8 C8.3 38 6.3 31 7.1 26.8 C9.2 31.4 11 37 11.6 44.6" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.1 44.7 C13.6 39 15.4 35 16.7 32.8 C17.1 37.3 14.7 42 12.2 44.8" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.2 21.6 C10.6 19.9 8.2 18.7 6.5 18.6 C7.5 20.7 9.6 22.3 12.2 22.7" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M12.4 25.4 C13.9 23.6 15.6 22.4 16.9 22 C16.5 24.2 14.7 25.9 12.4 26.3" fill="var(--c-iris-leaf)" stroke="none" transform="translate(.9 -.7)"/><path d="M11.5 12.6 C9.7 9.6 9.5 5.3 12.3 4.4 C15.3 3.6 16.9 6.8 15.3 9.6 C14.5 11 13.5 12 12.6 12.9"/><path d="M11.6 13.3 C9 11.8 5.3 11.4 4.5 13.4 C3.8 15.3 6.4 16.5 9.2 15.9 C10.2 15.7 11 14.7 11.6 13.7"/><path d="M12.6 13.4 C14.6 12.3 18.6 12.1 19.3 14.3 C19.9 16.4 18.4 18.7 16.6 17.7 C15 16.9 13.6 15 12.8 13.9"/><path d="M11.8 14.1 C11 15.7 11.2 18.1 12.6 18.3 C13.8 18.5 13.6 15.9 12.6 14.1"/><path d="M11.4 44.8 C8.3 38 6.3 31 7.1 26.8 C9.2 31.4 11 37 11.6 44.6"/><path d="M12.1 44.7 C13.6 39 15.4 35 16.7 32.8 C17.1 37.3 14.7 42 12.2 44.8"/><path d="M12.2 21.6 C10.6 19.9 8.2 18.7 6.5 18.6 C7.5 20.7 9.6 22.3 12.2 22.7"/><path d="M12.4 25.4 C13.9 23.6 15.6 22.4 16.9 22 C16.5 24.2 14.7 25.9 12.4 26.3"/><path d="M12.2 14.6 C12.5 24 12.1 34 11.7 45"/><path d="M12.1 12.4 L11.2 9.6 M12.3 12.5 L13.6 10 M11.5 13.3 L9.4 13.6 M12.8 13.5 L15 14.4"/></svg></a>
-  <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+  <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#" data-page="home" class="active">Work</a></li>
     <li><a href="#" data-page="about">About</a></li>
