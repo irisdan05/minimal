@@ -1,4 +1,4 @@
-"""Build the public Formlane site (its.irisdan.xyz) from the private source file.
+"""Build the public minimal version of the portfolio (its.irisdan.xyz) from the private source file.
 
 Run:  python3 build.py
 Reads ../designportfolio/backlog-formlane.html, copies only the images/fonts it uses,
