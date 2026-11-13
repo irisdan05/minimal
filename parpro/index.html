@@ -1027,10 +1027,22 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
 .fl-cogs>span{display:inline-block;vertical-align:bottom;overflow:hidden;white-space:nowrap;transition:max-width .5s var(--ease),opacity .3s;}
 .fl-cogs-s{max-width:4em;opacity:1;}
 .fl-cogs-l{max-width:0;opacity:0;}
-.fl-cogs:hover,.fl-cogs:focus,.fl-cogs.open{color:var(--c-accent);border-color:var(--c-accent);}
-.fl-cogs:hover .fl-cogs-s,.fl-cogs:focus .fl-cogs-s,.fl-cogs.open .fl-cogs-s{max-width:0;opacity:0;}
-.fl-cogs:hover .fl-cogs-l,.fl-cogs:focus .fl-cogs-l,.fl-cogs.open .fl-cogs-l{max-width:var(--open,14em);opacity:1;}
-@media(max-width:768px){.fl-cogs.open .fl-cogs-l{white-space:normal;display:inline;}}
+.fl-cogs.open{color:var(--c-accent);border-color:var(--c-accent);}
+.fl-cogs.open .fl-cogs-s{max-width:0;opacity:0;}
+.fl-cogs.open .fl-cogs-l{max-width:var(--open,14em);opacity:1;}
+/* mouse / keyboard: expand on hover or focus */
+@media(hover:hover){
+  .fl-cogs:hover,.fl-cogs:focus-visible{color:var(--c-accent);border-color:var(--c-accent);}
+  .fl-cogs:hover .fl-cogs-s,.fl-cogs:focus-visible .fl-cogs-s{max-width:0;opacity:0;}
+  .fl-cogs:hover .fl-cogs-l,.fl-cogs:focus-visible .fl-cogs-l{max-width:var(--open,14em);opacity:1;}
+}
+/* touch: tap toggles only. No width animation, so the text can't slide out from under a finger and loop */
+@media(hover:none){
+  .fl-cogs>span{transition:opacity .25s;}
+  .fl-cogs-l{display:none;}
+  .fl-cogs.open .fl-cogs-s{display:none;}
+  .fl-cogs.open .fl-cogs-l{display:inline;max-width:none;white-space:normal;}
+}
 @media(max-width:768px){.fl-sub{font-size:var(--fs-body);margin-top:var(--space-3);}}
 
 
