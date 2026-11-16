@@ -1179,6 +1179,10 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 @keyframes page-in{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
 @media(max-width:768px){.page.active>*:not(script):not(style){animation:page-in .65s var(--ease-bounce) backwards;}}
 @media(prefers-reduced-motion:reduce){.page{transition:opacity .2s;transform:none;}.page.active>*{animation:none !important;}.il-text{animation:none;opacity:1;}}
+
+/* about: equal space above and below the photo ring (box hugs the cards, section gap on both sides) */
+.ma-ring-stage{height:308px;margin-top:var(--section);}
+.ma-sec:has(.ma-ring-stage){margin-bottom:var(--section);}
 </style>
 </head>
 <body data-view="home">
@@ -2562,7 +2566,7 @@ function baPick(btn,page,panel){
           T=stage.clientWidth-2*0.45*g,P=parseFloat(getComputedStyle(stage).perspective)||900,
           Rt=P*T/(2*P-T),cw=Math.max(40,2*Rt*Math.tan(Math.PI/N)-10);
       for(var k=0;k<N;k++){var cs=cards[k].style;cs.width=cw+'px';cs.height=cw*1.4+'px';cs.left=-cw/2+'px';cs.top=-cw*0.7+'px';}
-      stage.style.height=Math.round(cw*1.4+48)+'px';
+      stage.style.height=Math.round(cw*1.4+8)+'px';
     }else{for(var k2=0;k2<N;k2++)cards[k2].removeAttribute('style');stage.style.height='';}
     var w=(parseFloat(getComputedStyle(cards[0]).width)||170)+10,R=w/(2*Math.tan(Math.PI/N));
     for(var i=0;i<N;i++)cards[i].style.transform='rotateY('+(i*360/N)+'deg) translateZ('+R+'px)';
