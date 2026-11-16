@@ -19,9 +19,13 @@ git push -q origin main
 
 cd "$MAIN"
 # only the built pages plus any images/fonts the page uses; never .DS_Store or private files
-ASSETS=$(python3 -c "import re,urllib.parse;h=open('index.html').read();print(' '.join(sorted(set(urllib.parse.unquote(r) for r in re.findall(r'''(?:images|fonts)/[^\"')\s>]+''',h)))))")
 git add $PAGES
-for a in $ASSETS; do git add -- "$a"; done
+python3 - <<'PY'
+import re, subprocess, urllib.parse
+h = open('index.html').read()
+refs = sorted(set(urllib.parse.unquote(r) for r in re.findall(r"""(?:images|fonts)/[^"')\s>]+""", h)))
+if refs: subprocess.run(['git', 'add', '--'] + refs, check=True)
+PY
 git diff --cached --quiet || git commit -q -m "$MSG"
 git push -q origin main
 echo "published to its.irisdan.xyz and irisdan.xyz"
