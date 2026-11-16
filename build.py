@@ -1,14 +1,17 @@
 """Build the public minimal version of the portfolio (its.irisdan.xyz) from the private source file.
 
-Run:  python3 build.py
+Run:  python3 build.py                     -> this folder, for its.irisdan.xyz
+      python3 build.py --main              -> ../designportfolio, for irisdan.xyz
 Reads ../designportfolio/backlog-formlane.html, copies only the images/fonts it uses,
 and writes index.html plus one folder per page so /about, /lumeno etc. load directly.
 """
-import os, re, shutil, urllib.parse
+import os, re, shutil, sys, urllib.parse
 
 SRC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'designportfolio')
-OUT = os.path.dirname(os.path.abspath(__file__))
-DOMAIN = 'https://its.irisdan.xyz'
+MAIN = '--main' in sys.argv
+OUT = os.path.realpath(SRC_DIR) if MAIN else os.path.dirname(os.path.abspath(__file__))
+DOMAIN = 'https://irisdan.xyz' if MAIN else 'https://its.irisdan.xyz'
+SAME = os.path.realpath(OUT) == os.path.realpath(SRC_DIR)   # building in place: assets are already there
 ROUTES = ['about', 'playground', 'lumeno', 'setdm', 'parpro']
 
 html = open(os.path.join(SRC_DIR, 'backlog-formlane.html'), encoding='utf-8').read()
@@ -18,8 +21,9 @@ html = html.replace('<head>', '<head>\n<base href="/">', 1)
 html = html.replace('https://irisdan.xyz/', DOMAIN + '/')
 
 # copy only the assets the page references
-for d in ('images', 'fonts'):
-    shutil.rmtree(os.path.join(OUT, d), ignore_errors=True)
+if not SAME:
+    for d in ('images', 'fonts'):
+        shutil.rmtree(os.path.join(OUT, d), ignore_errors=True)
 refs = set(re.findall(r'''(?:images|fonts)/[^"')\s>]+''', html))
 missing = []
 for ref in sorted(refs):
@@ -27,6 +31,8 @@ for ref in sorted(refs):
     src = os.path.join(SRC_DIR, path)
     if not os.path.isfile(src):
         missing.append(path); continue
+    if SAME:
+        continue
     dst = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     shutil.copy2(src, dst)
