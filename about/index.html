@@ -107,6 +107,7 @@
   --fs-h2:clamp(1.4rem,2vw,1.75rem);    /* section headings */
   --fs-h1:clamp(2.4rem,4vw,3.4rem);     /* case study titles */
   --fs-statement:clamp(1.75rem,3.8vw,3.4rem); /* home hero statement */
+  --ff-body:"Helvetica Neue",Helvetica,Arial,sans-serif; /* body + UI */
   --ff-hand:"Nanum Pen Script","Bradley Hand",cursive; /* handwritten accents */
   --lh-tight:1.2; --lh-body:1.6;
   --tracking:normal;       /* all text */
@@ -132,15 +133,15 @@
 html{scroll-behavior:smooth;font-size:120%;background:var(--c-surface);}
 html,body,*{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E") 0 0,none!important;}
 img,svg,a,button,input,select,textarea,[draggable],.pg-float-card,.pg-float-card:hover,.pg-float-card.is-dragging,.pg-float-card *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'/%3E") 0 0,none!important;}
-body{background:var(--bg);color:var(--text);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;overflow:hidden;cursor:none;height:100vh;}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-body);font-weight:400;overflow:hidden;cursor:none;height:100vh;}
 .cursor{position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);image-rendering:pixelated;transition:none;user-select:none;}
 .cursor-ring{display:none;}
 @media(pointer:coarse){.cursor,.cursor-ring{display:none !important;}#vendingMachine{display:none !important;}}
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:var(--space-6) var(--space-9);padding-top:max(var(--space-6),env(safe-area-inset-top));background:none;transition:transform .45s var(--ease);box-sizing:border-box;width:100vw;}
 nav.nav-hidden{transform:translateY(-120%);}
-.nav-logo{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--purple-text);text-decoration:none;cursor:none;letter-spacing:var(--tracking);}
+.nav-logo{font-family:var(--ff-body);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--purple-text);text-decoration:none;cursor:none;letter-spacing:var(--tracking);}
 .nav-links{display:flex;gap:var(--space-8);list-style:none;}
-.nav-links a{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--text-soft);text-decoration:none;transition:color .3s;cursor:none;position:relative;display:inline-block;}
+.nav-links a{font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--text-soft);text-decoration:none;transition:color .3s;cursor:none;position:relative;display:inline-block;}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:1px;background:var(--purple);transition:transform .3s,opacity .3s;transform:translateY(6px);opacity:0;}
 .nav-links a.active::after{transform:translateY(0);opacity:1;}
 .nav-links a.active{color:var(--purple-text);}
@@ -151,11 +152,12 @@ nav.nav-on-dark .nav-links a.active{color:rgba(255,255,255,0.95);}
 nav.nav-on-dark .nav-links a:hover{color:rgba(255,255,255,0.95);}
 nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .page{position:fixed;inset:0;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .45s var(--ease),transform .65s var(--ease-bounce);overflow-y:auto;overflow-x:hidden;padding-bottom:var(--space-10);scrollbar-gutter:stable;}
-.snav-btn{display:block;width:100%;text-align:left;background:none;border:none;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-faint);cursor:none;padding:var(--space-4) 0;line-height:1.4;transition:color .18s;}
+.snav-btn{display:block;width:100%;text-align:left;background:none;border:none;font-family:var(--ff-body);font-size:var(--t7);color:var(--text-faint);cursor:none;padding:var(--space-4) 0;line-height:1.4;transition:color .18s;}
 .snav-btn:hover,.snav-btn.active{color:var(--purple-text);}
 .thought-cloud{display:inline;}
-.ba-tab{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);border:1.5px solid var(--purple-text);border-radius:var(--r-sm);background:transparent;cursor:none;padding:var(--space-1) var(--space-4);color:var(--purple-text);transition:background .18s,color .18s;}
+.ba-tab{font-family:var(--ff-body);font-size:var(--t7);border:1.5px solid var(--purple-text);border-radius:var(--r-sm);background:transparent;cursor:none;padding:var(--space-1) var(--space-4);color:var(--purple-text);transition:background .18s,color .18s;}
 .ba-tab.ba-on,.ba-tab:hover{background:var(--purple-text);color:var(--c-on-accent);}
+@media(hover:none),(max-width:768px){.ba-tab:not(.ba-on):hover,.ba-tab:not(.ba-on):focus{background:transparent;color:var(--purple-text) !important;}.ba-tab.ba-on:hover,.ba-tab.ba-on:focus{color:var(--c-on-accent) !important;}}
 .page.active{opacity:1;pointer-events:all;transform:translateY(0);}
 .page.exit{opacity:0;pointer-events:none;transform:translateY(-10px);}
 .section-label{font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);border-top:1px solid var(--c-line);margin-bottom:var(--space-9);}
@@ -175,12 +177,12 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .vinyl-grooves-ring{position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at center,transparent 0px,transparent 9px,rgba(36,39,42,.08) 10px,transparent 11px);}
 .vinyl-sheen{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0%,rgba(255,255,255,.25) 20%,transparent 40%);}
 .vinyl-label-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;background:var(--c-accent-tint);border:1px solid var(--c-line);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:var(--space-1);box-shadow:var(--sh-2);}
-.vinyl-label-text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--purple);opacity:.7;pointer-events:none;}
+.vinyl-label-text{font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--purple);opacity:.7;pointer-events:none;}
 .vinyl-hole{width:11px;height:11px;border-radius:50%;background:var(--bg);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--c-line);}
 .tonearm{position:absolute;top:5%;right:10%;width:2px;height:190px;background:var(--c-ink-3);transform-origin:top center;transform:rotate(22deg);border-radius:1px;transition:transform .9s cubic-bezier(.23,1,.32,1);}
 .tonearm.lifted{transform:rotate(-8deg);}
 .vinyl-wrap{cursor:none!important;}
-.vinyl-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.55);backdrop-filter:blur(6px);border:1px solid var(--c-line);display:flex;align-items:center;justify-content:center;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--purple);opacity:0;transition:opacity .3s;pointer-events:none;z-index:10;}
+.vinyl-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.55);backdrop-filter:blur(6px);border:1px solid var(--c-line);display:flex;align-items:center;justify-content:center;font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--purple);opacity:0;transition:opacity .3s;pointer-events:none;z-index:10;}
 .vinyl-wrap:hover .vinyl-hint{opacity:1;}
 .tonearm::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--c-scrim);border:1px solid var(--c-line);}
 .tonearm::after{content:'';position:absolute;bottom:0;left:-3px;width:8px;height:8px;border-left:2px solid var(--c-line);border-bottom:2px solid var(--c-line);transform:rotate(-20deg);}
@@ -197,9 +199,9 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .hero-sticker{display:inline;font-style:normal;font-size:.85em;vertical-align:baseline;line-height:1;}
 .hero-img-sticker{display:inline;height:1.3em;width:auto;vertical-align:middle;object-fit:contain;position:relative;top:-.1em;}
 .hero-bottom{display:flex;flex-direction:column;gap:var(--space-2);}
-.hero-title{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t1);font-weight:500;line-height:1.06;letter-spacing:var(--tracking);max-width:860px;opacity:0;animation:fadeUp 1s .15s forwards;color:var(--text);}
+.hero-title{font-family:var(--ff-body);font-size:var(--t1);font-weight:500;line-height:1.06;letter-spacing:var(--tracking);max-width:860px;opacity:0;animation:fadeUp 1s .15s forwards;color:var(--text);}
 .hero-title em{font-style:italic;font-weight:500;color:var(--purple);}
-.hero-intro{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:calc(var(--t1) * 1.1);font-weight:400;line-height:1.18;letter-spacing:var(--tracking);color:var(--text);}
+.hero-intro{font-family:var(--ff-body);font-size:calc(var(--t1) * 1.1);font-weight:400;line-height:1.18;letter-spacing:var(--tracking);color:var(--text);}
 .hi-seg{opacity:0;animation:fadeUp 1.168s forwards;}
 .hi-1{animation-delay:.08s;}
 .hi-2{animation-delay:.64s;}
@@ -211,7 +213,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .hero-intro em{font-style:normal;font-weight:400;color:var(--purple-text);}
 .pd-underline{position:relative;white-space:nowrap;font-style:normal;}
 .pd-underline::after{content:'';position:absolute;left:0;right:0;bottom:-10px;height:14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 14' preserveAspectRatio='none'%3E%3Cpath d='M3,10 C75,5 210,5.5 297,10.5' stroke='%23ffcb99' stroke-width='2.8' fill='none' stroke-linecap='round' opacity='.68'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:100% 100%;pointer-events:none;}
-.hero-statement{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:400;line-height:1.7;letter-spacing:var(--tracking);color:var(--text-soft);opacity:0;animation:fadeUp 1s .6s forwards;}
+.hero-statement{font-family:var(--ff-body);font-size:var(--t6);font-weight:400;line-height:1.7;letter-spacing:var(--tracking);color:var(--text-soft);opacity:0;animation:fadeUp 1s .6s forwards;}
 .hero-statement em{font-style:italic;color:var(--purple-text);font-weight:400;}
 .music-note{position:absolute;font-size:var(--t4);color:var(--c-ink-3);pointer-events:none;animation:noteFloat 6s ease-in-out infinite;}
 .music-note:nth-child(1){top:18%;left:12%;animation-delay:0s;animation-duration:7s;}
@@ -220,7 +222,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .music-note:nth-child(4){bottom:28%;left:18%;animation-delay:2.2s;animation-duration:6.5s;font-size:var(--t6);}
 .music-note:nth-child(5){top:55%;right:30%;animation-delay:3s;animation-duration:7.5s;}
 @keyframes noteFloat{0%,100%{transform:translateY(0) rotate(-8deg);opacity:.28;}50%{transform:translateY(-14px) rotate(6deg);opacity:.5;}}
-.hero-sub{margin-top:var(--space-7);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t5);font-weight:400;letter-spacing:var(--tracking);color:var(--text-soft);white-space:nowrap;opacity:0;animation:fadeUp 1.08s 4s forwards;}
+.hero-sub{margin-top:var(--space-7);font-family:var(--ff-body);font-size:var(--t5);font-weight:400;letter-spacing:var(--tracking);color:var(--text-soft);white-space:nowrap;opacity:0;animation:fadeUp 1.08s 4s forwards;}
 .marquee-wrap{overflow:hidden;padding:var(--space-6) 0;border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);}
 .marquee-track{display:flex;gap:var(--space-9);white-space:nowrap;animation:marquee 24s linear infinite;width:max-content;}
 .marquee-item{font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--c-ink-3);display:flex;align-items:center;gap:var(--space-9);}
@@ -228,15 +230,15 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .home-cases{padding:var(--space-12) var(--space-9) var(--space-12);display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);position:relative;}
 .cv-section{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-9);border-top:1px solid var(--border);padding:var(--space-9) 0 var(--space-11);}
-.cv-heading{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);letter-spacing:var(--tracking);line-height:1.35;margin-bottom:var(--space-6);}
+.cv-heading{font-family:var(--ff-body);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);letter-spacing:var(--tracking);line-height:1.35;margin-bottom:var(--space-6);}
 .cv-list{list-style:none;display:flex;flex-direction:column;gap:var(--space-6);}
 /* each entry stacks title, org, then date */
 .cv-item{display:flex;flex-direction:column;gap:2px;}
 .cv-row{display:contents;}
-.cv-title{order:1;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);letter-spacing:var(--tracking);line-height:1.5;}
-.cv-sub{order:2;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);letter-spacing:var(--tracking-caps);line-height:1.5;}
+.cv-title{order:1;font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);letter-spacing:var(--tracking);line-height:1.5;}
+.cv-sub{order:2;font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);letter-spacing:var(--tracking-caps);line-height:1.5;}
 .cv-sub .cv-org{color:var(--purple-text);}
-.cv-date{order:3;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-faint);line-height:1.5;}
+.cv-date{order:3;font-family:var(--ff-body);font-size:var(--t6);color:var(--text-faint);line-height:1.5;}
 @media(max-width:1100px){.cv-section{grid-template-columns:repeat(2,1fr);gap:var(--space-9) var(--space-8);}}
 @media(max-width:768px){.cv-section{grid-template-columns:1fr;gap:var(--space-8);padding:var(--space-7) 0 var(--space-10);}}
 .sc-card{position:relative;cursor:none;padding:0;}
@@ -282,10 +284,10 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .w-bar.accent{background:var(--c-accent);opacity:.45;}
 .w-chart-line{position:absolute;bottom:20%;left:0;right:0;height:1px;background:rgba(36,39,42,.18);}
 .sc-caption{display:flex;align-items:baseline;justify-content:space-between;padding:var(--space-4) 0 var(--space-1);position:relative;z-index:1;}
-.sc-title{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t5);font-weight:500;color:var(--ink);letter-spacing:var(--tracking);transition:color .3s;}
+.sc-title{font-family:var(--ff-body);font-size:var(--t5);font-weight:500;color:var(--ink);letter-spacing:var(--tracking);transition:color .3s;}
 .sc-card:hover .sc-title{color:var(--purple-text);}
-.sc-meta{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-faint);letter-spacing:var(--tracking);margin-left:auto;}
-.sc-arrow{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--purple-text);text-decoration:none;cursor:none;transition:color .25s,transform .25s ease;display:inline-block;}
+.sc-meta{font-family:var(--ff-body);font-size:var(--t6);color:var(--text-faint);letter-spacing:var(--tracking);margin-left:auto;}
+.sc-arrow{font-family:var(--ff-body);font-size:var(--t6);color:var(--purple-text);text-decoration:none;cursor:none;transition:color .25s,transform .25s ease;display:inline-block;}
 .sc-card:hover .sc-arrow{color:var(--purple-text);transform:translateX(4px);}
 .sc-note{display:none;}
 .cs-fade{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease;}
@@ -304,7 +306,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .card-art{position:absolute;inset:0;z-index:1;pointer-events:none;}
 .case-card-content{position:absolute;bottom:0;left:0;right:0;padding:var(--space-6);z-index:3;}
 .case-tag{display:inline-block;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--purple-text);background:rgba(36,39,42,.15);border:1px solid var(--c-line);padding:3px var(--space-2);margin-bottom:var(--space-2);}
-.case-title{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t4);font-weight:500;line-height:1.2;color:var(--text);margin-bottom:var(--space-1);}
+.case-title{font-family:var(--ff-body);font-size:var(--t4);font-weight:500;line-height:1.2;color:var(--text);margin-bottom:var(--space-1);}
 .case-desc{font-size:var(--t6);letter-spacing:var(--tracking-caps);color:var(--text-soft);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .4s;opacity:0;}
 .case-card:hover .case-desc{max-height:60px;opacity:1;}
 .case-arrow{position:absolute;top:20px;right:20px;z-index:3;width:32px;height:32px;border-radius:50%;border:1px solid var(--c-line);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(6px);color:var(--purple);font-size:var(--t6);transition:opacity .3s,transform .3s;}
@@ -339,7 +341,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .about-photo-stamp{position:absolute;bottom:52px;right:-18px;width:52px;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;opacity:.55;z-index:5;transform:rotate(8deg);}
 .about-photo-stamp::before{content:'';position:absolute;inset:0;border:2px solid var(--purple-text);}
 .about-photo-stamp::after{content:'';position:absolute;inset:5px;border:1px solid var(--purple-text);}
-.about-photo-stamp-text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);text-align:center;line-height:1.8;position:relative;z-index:1;}
+.about-photo-stamp-text{font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);text-align:center;line-height:1.8;position:relative;z-index:1;}
 .about-image-placeholder{aspect-ratio:3/4;border:1px dashed var(--c-line);display:flex;align-items:center;justify-content:center;background:var(--c-sunken);position:sticky;top:110px;overflow:hidden;}
 .about-image-placeholder::before{content:'';position:absolute;inset:0;background:none;}
 .ph-inner{display:flex;flex-direction:column;align-items:center;gap:var(--space-3);z-index:1;}
@@ -355,7 +357,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .about-vinyl-deco-grooves{position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at center,transparent 0px,transparent 6px,rgba(36,39,42,.1) 7px,transparent 8px);}
 .about-vinyl-deco-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--c-sunken);}
 .about-vinyl-deco-hole{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:var(--bg);}
-.about-label{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:calc(var(--t3) * 1.1);font-weight:400;color:var(--text);margin-bottom:var(--t5);letter-spacing:var(--tracking);line-height:1.35;}
+.about-label{font-family:var(--ff-body);font-size:calc(var(--t3) * 1.1);font-weight:400;color:var(--text);margin-bottom:var(--t5);letter-spacing:var(--tracking);line-height:1.35;}
 .about-quote-large{display:none;}
 .about-quote-large span{display:none;}
 .about-sticker{font-family:var(--ff-hand);font-style:normal;font-size:var(--t3);font-weight:400;background:var(--c-sunken);-webkit-background-clip:unset;-webkit-text-fill-color:unset;background-clip:unset;color:#002bba;padding:var(--space-1) var(--space-2);display:inline-block;transform:rotate(3deg);box-shadow:var(--sh-1);border:1px solid rgba(255,220,100,.4);vertical-align:middle;margin-left:var(--space-2);}
@@ -364,19 +366,19 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .about-fun-facts-inner{background:#121212;border-radius:var(--r-md);padding:var(--space-5) var(--space-6) var(--space-4);width:100%;max-width:360px;}
 .about-fun-facts-header{display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-1);}
 .about-fun-facts-logo{width:22px;height:22px;flex-shrink:0;}
-.about-fun-facts-title{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:600;color:#1db954;letter-spacing:var(--tracking-caps);text-transform:uppercase;}
-.about-fun-facts-subtitle{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t4);font-weight:700;color:var(--c-on-accent);margin-bottom:var(--space-1);line-height:1.2;}
-.about-fun-facts-meta{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);color:rgba(255,255,255,.4);margin-bottom:var(--space-4);text-transform:uppercase;}
+.about-fun-facts-title{font-family:var(--ff-body);font-size:var(--t6);font-weight:600;color:#1db954;letter-spacing:var(--tracking-caps);text-transform:uppercase;}
+.about-fun-facts-subtitle{font-family:var(--ff-body);font-size:var(--t4);font-weight:700;color:var(--c-on-accent);margin-bottom:var(--space-1);line-height:1.2;}
+.about-fun-facts-meta{font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);color:rgba(255,255,255,.4);margin-bottom:var(--space-4);text-transform:uppercase;}
 .about-fun-facts-list{list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.06);}
 .about-fun-facts-list li{display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:var(--space-3);padding:var(--space-2) 0;border-bottom:1px solid rgba(255,255,255,.06);cursor:none;}
 .about-fun-facts-list li:hover .ff-num{display:none;}
 .about-fun-facts-list li:hover .ff-play{display:block;}
-.ff-num{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);color:rgba(255,255,255,.4);text-align:right;}
+.ff-num{font-family:var(--ff-body);font-size:var(--t7);color:rgba(255,255,255,.4);text-align:right;}
 .ff-play{display:none;color:var(--c-on-accent);font-size:var(--t7);text-align:right;}
-.ff-text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);color:#e0e0e0;line-height:1.5;}
+.ff-text{font-family:var(--ff-body);font-size:var(--t6);color:#e0e0e0;line-height:1.5;}
 .ff-text a{color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:none;}
-.ff-duration{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);color:rgba(255,255,255,.35);}
-.about-bio-text{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.75;color:var(--text-soft);letter-spacing:var(--tracking-caps);}
+.ff-duration{font-family:var(--ff-body);font-size:var(--t7);color:rgba(255,255,255,.35);}
+.about-bio-text{font-family:var(--ff-body);font-size:var(--t6);line-height:1.75;color:var(--text-soft);letter-spacing:var(--tracking-caps);}
 .about-social-icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r-md);color:var(--text-faint);transition:color .18s,background .18s;text-decoration:none;}
 .about-social-icon svg{transition:color .18s;}
 .about-social-icon:hover{color:var(--purple);background:var(--c-sunken);}
@@ -385,9 +387,9 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .resume-rows{display:flex;flex-direction:column;gap:0;}
 .resume-row{display:flex;align-items:baseline;padding:var(--space-3) 0;border-bottom:1px solid var(--c-line);}
 .resume-row:last-child{border-bottom:none;}
-.resume-year{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-faint);margin-left:var(--space-2);white-space:nowrap;flex-shrink:0;}
-.resume-role{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking-caps);color:var(--text-soft);}
-.playground-sub{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);letter-spacing:var(--tracking-caps);line-height:1.75;margin-bottom:var(--space-6);margin-top:0;}
+.resume-year{font-family:var(--ff-body);font-size:var(--t7);color:var(--text-faint);margin-left:var(--space-2);white-space:nowrap;flex-shrink:0;}
+.resume-role{font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking-caps);color:var(--text-soft);}
+.playground-sub{font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);letter-spacing:var(--tracking-caps);line-height:1.75;margin-bottom:var(--space-6);margin-top:0;}
 .pg-deco-wrap{position:relative;}
 .pg-sticker{position:absolute;font-family:var(--ff-hand);pointer-events:none;user-select:none;z-index:10;}
 .pg-sticker-note{background:#fef08a;color:#713f12;padding:var(--space-2) var(--space-4);font-size:var(--t5);transform:rotate(-3deg);box-shadow:var(--sh-2);}
@@ -404,11 +406,11 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .pg-float-card.is-dragging{z-index:100;transition:none;}
 .pg-float-img{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative;}
 .pg-float-img img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
-.pg-float-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4);opacity:0;transition:opacity .2s;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking);text-transform:capitalize;color:rgba(255,255,255,.85);}
+.pg-float-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4);opacity:0;transition:opacity .2s;font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking);text-transform:capitalize;color:rgba(255,255,255,.85);}
 .pg-float-card:hover .pg-float-hint{opacity:1;}
 .pg-float-info{padding:var(--space-2) var(--space-4) var(--space-3);background:var(--c-surface);display:flex;flex-direction:column;gap:3px;}
-.pg-float-title{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);}
-.pg-float-tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--text-faint);}
+.pg-float-title{font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);}
+.pg-float-tag{font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--text-faint);}
 .pg-float-soon .pg-float-img{background:repeating-linear-gradient(45deg,rgba(36,39,42,.04) 0px,rgba(36,39,42,.04) 1px,transparent 1px,transparent 14px);}
 .pg-float-soon-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:var(--space-2);color:var(--c-ink-3);}
 /* lightbox */
@@ -417,9 +419,9 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .pg-lightbox-inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:var(--space-5);max-width:820px;width:92%;padding:var(--space-5);}
 .pg-lightbox-img{max-width:100%;max-height:62vh;object-fit:contain;border-radius:var(--r-md);box-shadow:var(--sh-3);}
 .pg-lightbox-meta{text-align:left;width:100%;}
-.pg-lightbox-title{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t4);font-weight:600;color:var(--c-on-accent);margin-bottom:var(--space-1);}
-.pg-lightbox-tag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:rgba(255,255,255,.4);display:block;margin-bottom:var(--space-2);}
-.pg-lightbox-blurb{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t5);line-height:1.75;color:rgba(255,255,255,.65);width:100%;margin:0 auto;}
+.pg-lightbox-title{font-family:var(--ff-body);font-size:var(--t4);font-weight:600;color:var(--c-on-accent);margin-bottom:var(--space-1);}
+.pg-lightbox-tag{font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:rgba(255,255,255,.4);display:block;margin-bottom:var(--space-2);}
+.pg-lightbox-blurb{font-family:var(--ff-body);font-size:var(--t5);line-height:1.75;color:rgba(255,255,255,.65);width:100%;margin:0 auto;}
 .pg-lightbox-close{position:absolute;top:-8px;right:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:50%;width:38px;height:38px;color:rgba(255,255,255,.7);font-size:var(--t5);cursor:none;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
 .pg-lightbox-close:hover{background:rgba(255,255,255,.14);color:var(--c-on-accent);}
 .audio-bar{position:fixed;bottom:0;left:0;right:0;height:52px;z-index:600;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-top:1px solid var(--c-line);display:flex;align-items:center;padding:0 var(--space-9);gap:var(--space-5);}
@@ -436,13 +438,13 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 #page-about .page-footer,#page-playground .page-footer,#page-lumeno .page-footer,#page-setdm .page-footer,#page-parpro .page-footer{border-top:1px solid var(--c-line);}
 .page-footer{margin-top:0!important;}
 .footer-eyebrow{display:none;}
-.footer-cta{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(clamp(var(--t4),3vw,var(--t3)) * 1.1);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:var(--space-6);}
+.footer-cta{font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(clamp(var(--t4),3vw,var(--t3)) * 1.1);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:var(--space-6);}
 .footer-email{display:none;}
 .footer-divider{display:none;}
 .footer-bottom{display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:var(--space-5);width:100%;margin-top:var(--space-2);}
-.footer-left{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);color:var(--text-faint);}
+.footer-left{font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);color:var(--text-faint);}
 .footer-links{display:flex;gap:var(--space-7);align-items:center;}
-.footer-links a{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--text-soft);text-decoration:none;cursor:none;transition:color .2s;border:none;background:none;width:auto;height:auto;border-radius:0;display:inline-flex;align-items:center;gap:var(--space-2);white-space:nowrap;}
+.footer-links a{font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--text-soft);text-decoration:none;cursor:none;transition:color .2s;border:none;background:none;width:auto;height:auto;border-radius:0;display:inline-flex;align-items:center;gap:var(--space-2);white-space:nowrap;}
 .footer-links a .arr{font-size:var(--t5);display:inline-block;transition:transform .25s ease;}
 .footer-links a:hover .arr,.footer-links a:active .arr{transform:translateX(4px);color:var(--purple);}
 .footer-links a:hover,.footer-links a:active{color:var(--purple);background:none;border:none;}
@@ -652,7 +654,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 }
 
 /* ─── case study back button ─── */
-.cs-back{position:absolute;top:80px;left:127px;display:inline-flex;align-items:center;gap:var(--space-2);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);text-decoration:none;transition:color .3s;z-index:10;}
+.cs-back{position:absolute;top:80px;left:127px;display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);text-decoration:none;transition:color .3s;z-index:10;}
 .cs-back:hover{color:var(--purple-text);}
 .cs-back-sm{left:52px;}
 
@@ -742,7 +744,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .sparkle:nth-child(20){animation:sparkleFadeAlt 4.5s ease-in-out infinite;animation-delay:1.6s;left:20%;top:62%;}
 
 .webring-hub{position:relative;display:inline-flex;}
-.webring-tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translate(-50%,4px);width:240px;padding:var(--space-2) var(--space-4);background:var(--cream);border:1px solid var(--c-line);border-radius:var(--r-md);box-shadow:var(--sh-2);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);font-weight:400;line-height:1.6;letter-spacing:var(--tracking);color:var(--text-soft);text-align:left;white-space:normal;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s .15s,transform .2s .15s,visibility 0s .35s;z-index:20;}
+.webring-tip{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translate(-50%,4px);width:240px;padding:var(--space-2) var(--space-4);background:var(--cream);border:1px solid var(--c-line);border-radius:var(--r-md);box-shadow:var(--sh-2);font-family:var(--ff-body);font-size:var(--t7);font-weight:400;line-height:1.6;letter-spacing:var(--tracking);color:var(--text-soft);text-align:left;white-space:normal;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s .15s,transform .2s .15s,visibility 0s .35s;z-index:20;}
 .webring-tip::before{content:'';position:absolute;left:0;right:0;top:100%;height:16px;}
 .webring-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--cream);}
 .webring-tip strong{font-weight:500;font-style:italic;color:var(--purple-text);}
@@ -759,24 +761,24 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .ab-layout{display:grid;grid-template-columns:88px minmax(0,1fr) 88px;gap:var(--space-8);}
 .ab-main{max-width:960px;width:100%;margin:0 auto;}
 .ab-side{position:sticky;top:120px;align-self:start;display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-2) var(--space-2);background:var(--cream);border:1px solid var(--border);border-radius:var(--r-md);box-shadow:var(--sh-2);}
-.ab-side-btn{display:flex;flex-direction:column;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-1) var(--space-2);border:none;border-radius:var(--r-md);background:none;color:var(--text-soft);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;transition:background .2s,color .2s;}
+.ab-side-btn{display:flex;flex-direction:column;align-items:center;gap:var(--space-2);padding:var(--space-3) var(--space-1) var(--space-2);border:none;border-radius:var(--r-md);background:none;color:var(--text-soft);font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;transition:background .2s,color .2s;}
 .ab-side-btn:hover{color:var(--purple-text);background:var(--c-sunken);}
 .ab-side-btn.active{background:var(--purple-text);color:var(--cream);}
 .ab-side-btn.active svg circle[fill="var(--cream)"]{fill:var(--purple-text);}
 .ab-hero{position:relative;height:100vh;height:100dvh;margin:-120px -52px var(--space-12);padding:0 var(--space-9);display:flex;align-items:center;justify-content:center;}
-.ab-hero-statement{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;font-size:clamp(2.4rem,4.8vw,4.4rem);line-height:1.12;letter-spacing:var(--tracking);color:var(--ink);text-align:center;max-width:1040px;text-wrap:balance;}
+.ab-hero-statement{font-family:var(--ff-body);font-weight:400;font-size:clamp(2.4rem,4.8vw,4.4rem);line-height:1.12;letter-spacing:var(--tracking);color:var(--ink);text-align:center;max-width:1040px;text-wrap:balance;}
 .ab-hero-statement em{font-style:normal;color:var(--purple-text);}
-.ab-hero-label{position:absolute;top:50%;transform:translateY(-50%);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);line-height:1.6;}
+.ab-hero-label{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);line-height:1.6;}
 .ab-hero-label--left{left:52px;}
 .ab-hero-label--right{right:52px;text-align:right;}
 #abClock{font-variant-numeric:tabular-nums;color:var(--purple-text);}
-.ab-hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);background:none;border:none;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--purple-text);transition:opacity .2s;}
+.ab-hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);background:none;border:none;font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--purple-text);transition:opacity .2s;}
 .ab-hero-scroll:hover{opacity:.6;}
 .ab-frame{--fc:#7558b0;--ft:#fff;position:relative;border:1px solid var(--fc);padding:var(--space-10);margin-bottom:var(--space-13);scroll-margin-top:110px;}
 .ab-frame--purple{--fc:#7558b0;--tag:#24272a;--ft:#fff;}
 .ab-frame--pink{--fc:#929396;--tag:#f4f4f4;--ft:var(--ink);}
 .ab-frame--sky{--fc:#929396;--tag:#e4e4e4;--ft:var(--ink);}
-.ab-tag{position:absolute;bottom:calc(100% + 10px);left:-1px;background:var(--tag);color:var(--ft);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;padding:var(--space-1) var(--space-2);line-height:1.4;}
+.ab-tag{position:absolute;bottom:calc(100% + 10px);left:-1px;background:var(--tag);color:var(--ft);font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;padding:var(--space-1) var(--space-2);line-height:1.4;}
 .ab-handle{position:absolute;width:11px;height:11px;background:var(--bg);border:1px solid var(--fc);}
 .ab-handle.tl{top:-6px;left:-6px;}.ab-handle.tr{top:-6px;right:-6px;}.ab-handle.bl{bottom:-6px;left:-6px;}.ab-handle.br{bottom:-6px;right:-6px;}
 .ab-cursor{position:absolute;right:-34px;top:34%;display:flex;align-items:flex-start;pointer-events:none;z-index:6;animation:abDrift 6s ease-in-out infinite;}
@@ -790,7 +792,7 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .ab-bio-row{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--space-10);align-items:start;}
 .ab-bio-notes{display:flex;flex-direction:column;gap:var(--space-7);padding-top:var(--space-2);}
 .ab-sticky{padding:var(--space-6) var(--space-6);box-shadow:var(--sh-2);}
-.ab-sticky p,.ab-sticky li{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.7;color:var(--ink);}
+.ab-sticky p,.ab-sticky li{font-family:var(--ff-body);font-size:var(--t6);line-height:1.7;color:var(--ink);}
 .ab-sticky ul{padding-left:1.2em !important;}
 .ab-sticky li{margin-bottom:var(--space-1);}
 .ab-sticky--yellow{background:var(--c-sunken);max-width:440px;}
@@ -809,8 +811,8 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .ab-principle:last-child{margin-bottom:0;}
 .ab-principle--right{flex-direction:row-reverse;}
 .ab-card{flex:0 0 58%;padding:var(--space-7) var(--space-7);}
-.ab-card h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;font-size:calc(var(--t3) * 1.05);letter-spacing:var(--tracking);line-height:1.15;color:var(--ink);margin-bottom:var(--space-3);}
-.ab-card p{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.75;color:var(--text-soft);}
+.ab-card h3{font-family:var(--ff-body);font-weight:400;font-size:calc(var(--t3) * 1.05);letter-spacing:var(--tracking);line-height:1.15;color:var(--ink);margin-bottom:var(--space-3);}
+.ab-card p{font-family:var(--ff-body);font-size:var(--t6);line-height:1.75;color:var(--text-soft);}
 .ab-card--lav{background:var(--c-sunken);}.ab-card--peach{background:var(--c-sunken);}.ab-card--sky{background:var(--c-sunken);}.ab-card--pink{background:var(--c-sunken);}
 .ab-note{display:flex;align-items:center;gap:var(--space-2);font-family:var(--ff-hand);font-size:var(--fs-xl);font-weight:400;color:var(--purple-text);}
 .ab-principle--right .ab-note{flex-direction:row-reverse;}
@@ -863,6 +865,8 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
 #page-home .sc-img{overflow:hidden;}
 #page-home .sc-paper{overflow:visible;}
 #page-home .sc-img{border:1px solid var(--c-line);}
+/* whole image visible ("zoomed out"); leftover space is a flat colour set on the card */
+.sc-fill{position:relative;width:100%;height:100%;object-fit:contain;display:block;}
 #page-home .sc-caption{display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:var(--space-3) 0 var(--space-1);}
 #page-home .sc-title{font-size:var(--fs-md);font-weight:400;color:var(--c-ink);letter-spacing:var(--tracking);}
 #page-home .sc-meta{margin-left:0;font-size:var(--fs-md);color:var(--c-ink-2);}
@@ -904,23 +908,23 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
   .fl-footer .fl-contact-line{margin:var(--space-7) var(--gutter) var(--block);}
 }
 .cs-pager{position:static;width:auto;display:flex;justify-content:space-around;align-items:center;gap:var(--space-6);padding:var(--section) var(--gutter);background:none;transform:none;z-index:auto;}
-.cs-pager-link{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:var(--fs-h2);line-height:1;color:var(--purple-text);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;transition:opacity .2s;}
+.cs-pager-link{font-family:var(--ff-body);font-size:var(--fs-h2);line-height:1;color:var(--purple-text);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;transition:opacity .2s;}
 .cs-pager-link:hover{opacity:.6;}
 @media(max-width:768px){.cs-pager{flex-direction:column;gap:var(--space-7);padding:var(--section) var(--gutter);}}
 
 /* purple dot cursor */
 #cursor,#cursorRing{display:none !important;}
-.fl-cursor{position:fixed;left:0;top:0;width:36px;height:36px;border-radius:18px;background:color-mix(in srgb,var(--c-accent-bright) 10%,transparent);box-shadow:0 0 0 .5px var(--c-accent);pointer-events:none;z-index:10000;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;opacity:0;transition:transform .45s var(--ease-bounce),width .35s var(--ease),height .35s var(--ease),background-color .25s,border-radius .35s,opacity .2s;}
+.fl-cursor{position:fixed;left:0;top:0;width:18px;height:18px;border-radius:9px;background:var(--c-accent-bright);pointer-events:none;z-index:10000;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;opacity:0;transition:transform .45s var(--ease-bounce),width .35s var(--ease),height .35s var(--ease),background-color .25s,border-radius .35s,opacity .2s;}
 .fl-cursor span{font-size:var(--fs-xs);font-weight:400;letter-spacing:var(--tracking);line-height:1.2;color:var(--c-accent);text-align:center;white-space:nowrap;opacity:0;transform:scale(.6);transition:opacity .2s,transform .3s;}
 .fl-cursor.is-on{opacity:1;}
-.fl-cursor.is-hover{transform:translate(-50%,-50%) scale(1.32);}
+.fl-cursor.is-hover{transform:translate(-50%,-50%) scale(1.45);}
 @media(prefers-reduced-motion:reduce){.fl-cursor{transition:opacity .2s;}}
 .fl-cursor.is-link{width:46px;height:30px;background:transparent;opacity:1;}
 .fl-eyes{position:absolute;left:50%;top:50%;width:46px;height:30px;transform:translate(-50%,-50%) scale(.4);opacity:0;transition:opacity .15s,transform .3s cubic-bezier(.3,1.6,.5,1);overflow:visible;}
 .fl-cursor.is-link .fl-eyes{opacity:1;transform:translate(-50%,-50%) scale(1);}
 .fl-eyes .pp{transition:transform .12s ease-out;}
 .fl-cursor.is-case{width:var(--cw,140px);height:36px;border-radius:16px;opacity:1;}
-.fl-cursor.is-case span{opacity:1;transform:none;transition-delay:.08s;}
+.fl-cursor.is-case span{opacity:1;transform:none;transition-delay:.08s;color:var(--c-on-accent);}
 @media(pointer:coarse){.fl-cursor{display:none !important;}}
 
 
@@ -936,7 +940,14 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
 .ma-who{display:grid;grid-template-columns:360px 1fr;gap:var(--space-5);align-items:start;}
 .ma-portrait{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
 /* desktop: photo matches the height of the text column beside it */
-@media(min-width:769px){.ma-portrait{align-self:stretch;aspect-ratio:auto;height:0;min-height:100%;}}
+/* about portrait as a polaroid: white frame, deeper bottom, slight tilt */
+.ma-polaroid{margin:0;background:var(--c-surface);padding:var(--space-3) var(--space-3) var(--space-11);box-shadow:var(--sh-2);transform:rotate(-2deg);}
+@media(min-width:769px){.ma-polaroid{align-self:start;}}
+@media(max-width:768px){.ma-polaroid{max-width:320px;margin:0 auto var(--space-4);padding-bottom:var(--space-10);}}
+.ma-polaroid .ma-portrait{aspect-ratio:4/5;height:auto;min-height:0;}
+/* divider between the bio and Experience, centred in the gap */
+.ma-sec:has(.ma-who){margin-bottom:var(--space-10);}
+.ma-sec--rule{border-top:1px solid var(--c-line);padding-top:var(--space-10);}
 .ma-bio p{font-size:var(--fs-body);line-height:1.5;color:var(--c-ink);margin:0 0 var(--space-5);max-width:none;}
 .ma-facts{margin-top:var(--space-8);padding-top:var(--space-5);border-top:1px solid var(--c-line);}
 .ma-facts-h{font-size:var(--fs-sm) !important;font-weight:700;text-transform:uppercase;letter-spacing:var(--tracking-caps);color:var(--c-ink) !important;margin:0 0 var(--space-3) !important;}
@@ -1044,6 +1055,9 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
   .fl-cogs-l{display:none;}
   .fl-cogs.open .fl-cogs-s{display:none;}
   .fl-cogs.open .fl-cogs-l{display:inline;max-width:none;white-space:normal;}
+  /* expanded pill never runs off-screen: it may drop to the next line and wrap inside */
+  .fl-sub span:has(>.fl-cogs.open){white-space:normal !important;}
+  .fl-cogs.open{max-width:100%;white-space:normal;vertical-align:top;line-height:1.25;}
 }
 @media(max-width:768px){.fl-sub{font-size:var(--fs-body);margin-top:var(--space-3);}}
 
@@ -1117,6 +1131,8 @@ a:not(.sc-card a):hover,a:not(.sc-card a):focus-visible,button:hover,button:focu
 .ma-hello{font-family:var(--ff-hand);font-weight:400;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1.1;letter-spacing:var(--tracking);color:var(--c-ink);margin:0;}
 @media(max-width:768px){.ma-hello{font-size:2rem;}}
 @media(min-width:769px){.ma-hello{text-align:center;}}
+/* mobile: About + Playground headings sit lower, clear of the nav */
+@media(max-width:768px){#page-about .ma-wrap,#page-playground .pg-wrap{padding-top:calc(var(--page-top) + var(--space-6)) !important;}}
 
 
 /* mobile: hamburger opens a full-screen menu */
@@ -1268,12 +1284,37 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <div class="sc-card sc-locked reveal">
       <div class="sc-paper">
+        <div class="sc-img" style="overflow:hidden;padding:0;background:#ddd8d3;">
+          <img class="sc-fill" src="images/symposium-cover.jpg" alt="Socratica Symposium">
+        </div>
+        <div class="sc-caption">
+          <span class="sc-title">Socratica Symposium</span>
+          <span class="sc-meta">Brand &amp; Merchandise</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sc-card sc-locked reveal">
+      <div class="sc-paper">
         <div class="sc-img" style="overflow:hidden;padding:0;">
           <img src="images/foryou.png" alt="for you" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
         <div class="sc-caption">
           <span class="sc-title">for you</span>
           <span class="sc-meta">App · iOS</span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="sc-card sc-locked reveal">
+      <div class="sc-paper">
+        <div class="sc-img" style="overflow:hidden;padding:0;background:#f4f2ef;">
+          <img class="sc-fill" src="images/atelier-cover.jpg" alt="Atelier">
+        </div>
+        <div class="sc-caption">
+          <span class="sc-title">Atelier</span>
+          <span class="sc-meta">Graphic Design</span>
         </div>
       </div>
     </div>
@@ -1326,7 +1367,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <section class="ma-sec">
       <div class="ma-who">
-        <img class="ma-portrait" src="images/irisimg.jpeg" alt="Iris">
+        <figure class="ma-polaroid"><img class="ma-portrait" src="images/irisimg.jpeg" alt="Iris"></figure>
         <div class="ma-bio">
           <p>I grew up heavily immersed in competitive music; it taught me professionalism, artistry, and that not being good at something is just part of learning.</p>
           <p>I transitioned into film, where craft met storytelling, and each scene I studied expanded my sense of empathy. That mindset now shapes my design practice: human-first, constantly iterative, and of course, visually purposeful.</p>
@@ -1344,11 +1385,12 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
       </div>
     </section>
 
-    <section class="ma-sec">
+    <section class="ma-sec ma-sec--rule">
       <h2 class="ma-label">Experience</h2>
       <ul class="ma-list">
         <li class="ma-row"><span class="ma-t">Founding Product Designer</span><span class="ma-d">SetDM AI</span><span class="ma-y">Nov 2025 – Present</span></li>
         <li class="ma-row"><span class="ma-t">Communications Designer</span><span class="ma-d">Institute for Computing, Information, &amp; Cognitive Systems</span><span class="ma-y">Oct 2026 – Present</span></li>
+        <li class="ma-row"><span class="ma-t">Freelance Designer &amp; Engineer</span><span class="ma-d">Startups &amp; creators with 1M+ followers</span><span class="ma-y">Nov 2025 – Present</span></li>
         <li class="ma-row"><span class="ma-t">User Experience Designer</span><span class="ma-d">UBC Visual Cognition Lab</span><span class="ma-y">Nov 2025 – Aug 2026</span></li>
         <li class="ma-row"><span class="ma-t">Product Design Intern</span><span class="ma-d">Lumeno AI</span><span class="ma-y">Aug 2025 – Oct 2025</span></li>
         <li class="ma-row"><span class="ma-t">Marketing Intern</span><span class="ma-d">iLumival Productions</span><span class="ma-y">Jun 2025 – Aug 2025</span></li>
@@ -1489,35 +1531,35 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <div class="reveal cs-hero-top" style="text-align:center;margin-bottom:var(--space-10);">
       <div style="margin-bottom:var(--space-6);">
-        <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);">Internship · EdTech</span>
+        <span style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);">Internship · EdTech</span>
       </div>
-      <h2 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:calc(clamp(var(--t2),6vw,var(--t1)) * 1.1);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:var(--tracking);margin-bottom:var(--space-7);">Lumeno AI: Accessibility Audit</h2>
+      <h2 style="font-family:var(--ff-body);font-size:calc(clamp(var(--t2),6vw,var(--t1)) * 1.1);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:var(--tracking);margin-bottom:var(--space-7);">Lumeno AI: Accessibility Audit</h2>
       <div class="cs-mockup-wrap" style="margin-bottom:var(--space-8);">
         <img loading="lazy" src="images/lumenoai.png" alt="Lumeno AI" style="width:70%;object-fit:contain;display:block;margin:0 auto;">
       </div>
     </div>
 
     <div class="reveal cs-meta-row lumeno-meta-row" style="display:flex;gap:var(--space-9);flex-wrap:wrap;justify-content:center;padding:var(--space-5) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:var(--space-10);">
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Role</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">Product Design Intern</div></div>
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Platform</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">iPad and Web</div></div>
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Timeline</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">3-month internship; 3-day project</div></div>
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Team</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">CEO, 3 Engineers, 1 Designer (Me)</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Role</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">Product Design Intern</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Platform</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">iPad and Web</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Timeline</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">3-month internship; 3-day project</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Team</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">CEO, 3 Engineers, 1 Designer (Me)</div></div>
     </div>
 
     <!-- 01 Overview -->
     <div id="cs-s01" class="reveal" style="margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">AI studying platform for university students</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">Lumeno is a study platform for university students with AI chat, flashcards, exam mode, summaries, and a digital notebook. However, beta users would consistently flag that the chat was hard to read, especially for people with ADHD or dyslexia.</p>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">A few weeks into my internship, I was tasked with running an accessibility audit to tackle this issue.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">AI studying platform for university students</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">Lumeno is a study platform for university students with AI chat, flashcards, exam mode, summaries, and a digital notebook. However, beta users would consistently flag that the chat was hard to read, especially for people with ADHD or dyslexia.</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">A few weeks into my internship, I was tasked with running an accessibility audit to tackle this issue.</p>
       <div class="csx-divider" style="border-top:1px solid var(--border);"></div>
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-top:var(--space-8);margin-bottom:var(--space-6);line-height:1.35;">🔍 Problem</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Lumeno's AI chat offers no reading customisation, giving students no way to adapt the features to their needs, leading to difficult and unusable product experiences.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-top:var(--space-8);margin-bottom:var(--space-6);line-height:1.35;">🔍 Problem</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Lumeno's AI chat offers no reading customisation, giving students no way to adapt the features to their needs, leading to difficult and unusable product experiences.</p>
     </div>
 
     <!-- 03 Audit -->
     <div id="cs-s03" class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Finding what the product was getting wrong</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">I ran a WCAG 2.2 compliance review, a heuristic evaluation of the app's key flows, and looked into the beta feedback given to us. From the feedback, I knew to prioritise tackling the wall of text the product would produce, as it was the most emphasised problem from the users.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Finding what the product was getting wrong</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">I ran a WCAG 2.2 compliance review, a heuristic evaluation of the app's key flows, and looked into the beta feedback given to us. From the feedback, I knew to prioritise tackling the wall of text the product would produce, as it was the most emphasised problem from the users.</p>
 
       <!-- Affinity map -->
       <img loading="lazy" class="lumeno-affinity-desktop" src="images/lumenoaffinity.png" alt="Affinity mapping — Lumeno accessibility audit" style="width:100%;border-radius:var(--r-md);display:block;margin-bottom:var(--space-8);">
@@ -1529,30 +1571,30 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
       <div style="border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;">
         <!-- Header row -->
         <div style="display:grid;grid-template-columns:2fr 1.2fr .7fr .7fr;background:var(--bg2);padding:var(--space-2) var(--space-5);border-bottom:1px solid var(--border);">
-          <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);">Issue</div>
-          <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);">WCAG Criterion</div>
-          <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);">Level</div>
-          <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);">Status</div>
+          <div style="font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);">Issue</div>
+          <div style="font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);">WCAG Criterion</div>
+          <div style="font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);">Level</div>
+          <div style="font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-soft);">Status</div>
         </div>
         <!-- Row 1 -->
         <div style="display:grid;grid-template-columns:2fr 1.2fr .7fr .7fr;padding:var(--space-6) var(--space-5);border-bottom:1px solid var(--border);align-items:start;">
           <div>
-            <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:var(--space-1);">Unreadable text density in chat</div>
-            <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">The AI's responses rendered as dense walls of text with no paragraph breaks. Beta users mentioned that this was a large barrier for ADHD.</div>
+            <div style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:var(--space-1);">Unreadable text density in chat</div>
+            <div style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.6;">The AI's responses rendered as dense walls of text with no paragraph breaks. Beta users mentioned that this was a large barrier for ADHD.</div>
           </div>
-          <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);padding-top:2px;">1.4.8 Visual Presentation</div>
-          <div style="padding-top:2px;"><span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);padding:2px var(--space-2);border-radius:var(--r-sm);background:var(--c-sunken);color:var(--ink);">AAA</span></div>
-          <div style="padding-top:2px;"><span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);padding:2px var(--space-2);border-radius:var(--r-sm);background:rgba(220,38,38,.08);color:var(--ink);">Fail</span></div>
+          <div style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);padding-top:2px;">1.4.8 Visual Presentation</div>
+          <div style="padding-top:2px;"><span style="font-family:var(--ff-body);font-size:var(--t7);padding:2px var(--space-2);border-radius:var(--r-sm);background:var(--c-sunken);color:var(--ink);">AAA</span></div>
+          <div style="padding-top:2px;"><span style="font-family:var(--ff-body);font-size:var(--t7);padding:2px var(--space-2);border-radius:var(--r-sm);background:rgba(220,38,38,.08);color:var(--ink);">Fail</span></div>
         </div>
         <!-- Row 2 -->
         <div style="display:grid;grid-template-columns:2fr 1.2fr .7fr .7fr;padding:var(--space-6) var(--space-5);border-bottom:1px solid var(--border);align-items:start;">
           <div>
-            <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:var(--space-1);">No text customisation controls</div>
-            <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Font size and letter spacing were fixed. Students had no way to change the reading experience to make it fit their needs.</div>
+            <div style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--text);margin-bottom:var(--space-1);">No text customisation controls</div>
+            <div style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.6;">Font size and letter spacing were fixed. Students had no way to change the reading experience to make it fit their needs.</div>
           </div>
-          <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);padding-top:2px;">1.4.4 Resize <span class="lumeno-resize-break">Text</span></div>
-          <div style="padding-top:2px;"><span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);padding:2px var(--space-2);border-radius:var(--r-sm);background:var(--c-sunken);color:var(--ink);">AA</span></div>
-          <div style="padding-top:2px;"><span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);padding:2px var(--space-2);border-radius:var(--r-sm);background:rgba(220,38,38,.08);color:var(--ink);">Fail</span></div>
+          <div style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);padding-top:2px;">1.4.4 Resize <span class="lumeno-resize-break">Text</span></div>
+          <div style="padding-top:2px;"><span style="font-family:var(--ff-body);font-size:var(--t7);padding:2px var(--space-2);border-radius:var(--r-sm);background:var(--c-sunken);color:var(--ink);">AA</span></div>
+          <div style="padding-top:2px;"><span style="font-family:var(--ff-body);font-size:var(--t7);padding:2px var(--space-2);border-radius:var(--r-sm);background:rgba(220,38,38,.08);color:var(--ink);">Fail</span></div>
         </div>
       </div>
 
@@ -1562,34 +1604,34 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 04 What we shipped -->
     <div id="cs-s04" class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Solution</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">The audit made clear that students had no control over how information was presented to them. The solution was to give that control back directly through in-app features.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Solution</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">The audit made clear that students had no control over how information was presented to them. The solution was to give that control back directly through in-app features.</p>
 
       <!-- Feature 1: Enlarge text size -->
       <div style="margin-bottom:var(--space-10);">
-        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t5) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-2);">Adjusting text size</p>
-        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-6);">Users can now increase or decrease font size within the app, addressing WCAG 1.4.4.</p>
+        <p style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t5) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-2);">Adjusting text size</p>
+        <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-6);">Users can now increase or decrease font size within the app, addressing WCAG 1.4.4.</p>
         <video src="images/enlargetext.mp4" loop muted playsinline class="autoplay-on-view" aria-label="Demo of adjustable text size feature in Lumeno AI chat" style="width:100%;border-radius:var(--r-md);display:block;"></video>
       </div>
 
       <!-- Feature 2: Letter spacing -->
       <div style="margin-bottom:0;">
-        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t5) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-2);">Adjusting letter spacing</p>
-        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-6);">We also added adjustable letter spacing; for users with dyslexia, wider letter spacing can be a significant aid when reading.</p>
+        <p style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t5) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-2);">Adjusting letter spacing</p>
+        <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-6);">We also added adjustable letter spacing; for users with dyslexia, wider letter spacing can be a significant aid when reading.</p>
         <video src="images/enlargespace.mp4" loop muted playsinline class="autoplay-on-view" aria-label="Demo of adjustable letter spacing feature in Lumeno AI chat" style="width:100%;border-radius:var(--r-md);display:block;"></video>
       </div>
 
       <!-- Add-on features -->
       <div style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-top:var(--space-10);">
-        <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Additional Features</h3>
+        <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Additional Features</h3>
         <div class="lumeno-addl-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
           <div style="background:var(--bg2);border-radius:var(--r-md);padding:var(--space-6) var(--space-6);">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t6) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-2);">Speech to text</p>
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);line-height:1.75;color:var(--text-soft);margin:0;">Students can say their questions aloud instead of typing, making the chatbot easier to use for students with motor difficulties.</p>
+            <p style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t6) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-2);">Speech to text</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t7);line-height:1.75;color:var(--text-soft);margin:0;">Students can say their questions aloud instead of typing, making the chatbot easier to use for students with motor difficulties.</p>
           </div>
           <div style="background:var(--bg2);border-radius:var(--r-md);padding:var(--space-6) var(--space-6);">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t6) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-2);">Text to speech</p>
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);line-height:1.75;color:var(--text-soft);margin:0;">AI responses can be read aloud, giving students with visual impairments or processing difficulties a more accessible experience.</p>
+            <p style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t6) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-2);">Text to speech</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t7);line-height:1.75;color:var(--text-soft);margin:0;">AI responses can be read aloud, giving students with visual impairments or processing difficulties a more accessible experience.</p>
           </div>
         </div>
       </div>
@@ -1597,9 +1639,9 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 05 Reflections -->
     <div id="cs-s05" class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:0;">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">What this project taught me</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Accessibility should be kept front and centre</p>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">As I was given the accessibility audit task after most of the main product was already built out, it made me realise how often accessibility goes overlooked in products. My main takeaway is that accessibility should be looked at in the early stages of building a product, and not as an add-on.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">What this project taught me</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Accessibility should be kept front and centre</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">As I was given the accessibility audit task after most of the main product was already built out, it made me realise how often accessibility goes overlooked in products. My main takeaway is that accessibility should be looked at in the early stages of building a product, and not as an add-on.</p>
     </div>
 
     <div style="margin-top:auto;padding-top:var(--space-10);margin-left:-75px;margin-right:-75px;">
@@ -1630,37 +1672,37 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <div class="reveal cs-hero-top" style="text-align:center;margin-bottom:var(--space-10);">
       <div style="margin-bottom:var(--space-6);">
-        <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);">Founding · B2B SaaS</span>
+        <span style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);">Founding · B2B SaaS</span>
       </div>
-      <h2 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:calc(clamp(var(--t2),6vw,var(--t1)) * 1.1);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:var(--tracking);margin-bottom:var(--space-7);">SetDM AI</h2>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t5);line-height:1.7;color:var(--text-soft);max-width:560px;margin:0 auto var(--space-7);">Designing a funnel-based inbox and AI co-pilot for fitness coaches and DM setters managing high-volume Instagram conversations.</p>
+      <h2 style="font-family:var(--ff-body);font-size:calc(clamp(var(--t2),6vw,var(--t1)) * 1.1);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:var(--tracking);margin-bottom:var(--space-7);">SetDM AI</h2>
+      <p style="font-family:var(--ff-body);font-size:var(--t5);line-height:1.7;color:var(--text-soft);max-width:560px;margin:0 auto var(--space-7);">Designing a funnel-based inbox and AI co-pilot for fitness coaches and DM setters managing high-volume Instagram conversations.</p>
     </div>
 
     <div class="reveal cs-meta-row setdm-meta-row" style="display:flex;gap:var(--space-9);flex-wrap:wrap;justify-content:center;padding:var(--space-5) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:var(--space-11);">
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Role</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">Founding Product Designer</div></div>
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Platform</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">Web app &amp; Meta Integrations</div></div>
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Timeline</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">1 Month</div></div>
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Team</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">CEO, CTO, and 1 Designer (Me)</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Role</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">Founding Product Designer</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Platform</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">Web app &amp; Meta Integrations</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Timeline</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">1 Month</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Team</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">CEO, CTO, and 1 Designer (Me)</div></div>
     </div>
 
     <!-- 01 Overview -->
     <div id="sdm-s01" class="reveal" style="margin-bottom:var(--space-11);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Instagram DMs were never built for scale</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">Instagram DMs rely on Instagram's inbox as their primary sales channel. The native inbox is flat, chronological, and completely unaware of where any given lead stands in a funnel. Coaches hire DM setters (people who make sales or set up sales calls using direct messaging on social media platforms) to manage the volume, but those setters had no real tooling to work with. The lack of pipeline visibility and assistance in reducing cognitive load make it painful to stage hundreds of conversations a day sustainably.</p>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);">SetDM AI is a funnel-based workspace built with AI, made specifically for DM setters to make sales faster and without burning out.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Instagram DMs were never built for scale</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">Instagram DMs rely on Instagram's inbox as their primary sales channel. The native inbox is flat, chronological, and completely unaware of where any given lead stands in a funnel. Coaches hire DM setters (people who make sales or set up sales calls using direct messaging on social media platforms) to manage the volume, but those setters had no real tooling to work with. The lack of pipeline visibility and assistance in reducing cognitive load make it painful to stage hundreds of conversations a day sustainably.</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);">SetDM AI is a funnel-based workspace built with AI, made specifically for DM setters to make sales faster and without burning out.</p>
     </div>
 
     <!-- 02 My Role -->
     <div id="sdm-s02" class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-11);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Founding Product Designer</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-7);">I spearheaded the product design, working in close partnership with the founder and engineer. The founder brought deep fitness industry and sales knowledge which shaped how we approached research and prioritisation throughout the design. The full initial product was completed within a month due to the high demand and limited time.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Founding Product Designer</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-7);">I spearheaded the product design, working in close partnership with the founder and engineer. The founder brought deep fitness industry and sales knowledge which shaped how we approached research and prioritisation throughout the design. The full initial product was completed within a month due to the high demand and limited time.</p>
     </div>
 
     <div class="reveal" style="margin-bottom:0;">
       <div style="border:1px solid var(--c-line);background:var(--c-surface);border-radius:var(--r-md);padding:var(--space-8);">
         <p style="font-size:2rem;margin-bottom:var(--space-4);line-height:1;">🚧</p>
-        <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-4);line-height:1.35;">This case study is still in progress.</h3>
-        <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Go check out my <a href="#playground" data-page="playground" style="color:var(--purple-text);text-decoration:underline;cursor:none;">playground</a> in the meantime!</p>
+        <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-4);line-height:1.35;">This case study is still in progress.</h3>
+        <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Go check out my <a href="#playground" data-page="playground" style="color:var(--purple-text);text-decoration:underline;cursor:none;">playground</a> in the meantime!</p>
       </div>
     </div>
 
@@ -1693,80 +1735,80 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <div class="reveal cs-hero-top" style="text-align:center;margin-bottom:var(--space-10);">
       <div style="margin-bottom:var(--space-6);">
-        <span style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);">Brand and Web · Competition</span>
+        <span style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);">Brand and Web · Competition</span>
       </div>
-      <h2 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:calc(clamp(var(--t2),6vw,var(--t1)) * 1.1);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:var(--tracking);margin-bottom:var(--space-7);">Parpro Consulting Ltd.</h2>
+      <h2 style="font-family:var(--ff-body);font-size:calc(clamp(var(--t2),6vw,var(--t1)) * 1.1);font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:var(--tracking);margin-bottom:var(--space-7);">Parpro Consulting Ltd.</h2>
       <img loading="lazy" class="cs-mockup-wrap" src="images/parprocasestudy.png" alt="Parpro Consulting — case study mockup" style="width:70%;border-radius:var(--r-md);display:block;margin-bottom:var(--space-8);margin-left:auto;margin-right:auto;">
     </div>
 
     <div class="reveal cs-meta-row parpro-meta-row" style="display:flex;gap:var(--space-9);flex-wrap:wrap;justify-content:center;padding:var(--space-5) 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:var(--space-10);">
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">My Role</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">Project Manager, UI/UX Designer</div></div>
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Team</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">Max Lu, Aubrey Ventura, Audrey Sum, Me</div></div>
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Client</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">Parpro Consulting Ltd.</div></div>
-      <div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Timeline</div><div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text);">2.5 Days</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">My Role</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">Project Manager, UI/UX Designer</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Team</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">Max Lu, Aubrey Ventura, Audrey Sum, Me</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Client</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">Parpro Consulting Ltd.</div></div>
+      <div><div style="font-family:var(--ff-body);font-size:var(--t6);letter-spacing:var(--tracking);color:var(--purple-text);margin-bottom:var(--space-2);">Timeline</div><div style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text);">2.5 Days</div></div>
     </div>
 
     <!-- 01 Overview -->
     <div class="reveal" style="margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">A bookkeeping firm with an identity crisis</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">Parpro Consulting Ltd. is a Canadian bookkeeping agency serving small to medium-sized businesses. Their existing website struggled to establish trust or stand out; the over-usage of generic stock photography, static layouts, inconsistent branding, and unclear information made the site feel illegitimate and wasn't converting as well as it needed to.</p>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);">Over 2.5 days, we did a full website and brand identity redesign for the FLUI Design Competition.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">A bookkeeping firm with an identity crisis</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">Parpro Consulting Ltd. is a Canadian bookkeeping agency serving small to medium-sized businesses. Their existing website struggled to establish trust or stand out; the over-usage of generic stock photography, static layouts, inconsistent branding, and unclear information made the site feel illegitimate and wasn't converting as well as it needed to.</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);">Over 2.5 days, we did a full website and brand identity redesign for the FLUI Design Competition.</p>
     </div>
 
     <!-- 02 Problem -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">🔍 Problem</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Parpro's current website design suffers from a weak establishment of brand identity and a lack of uniqueness, which results in diminished bookings, reduced trust, and lower engagement levels.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">🔍 Problem</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Parpro's current website design suffers from a weak establishment of brand identity and a lack of uniqueness, which results in diminished bookings, reduced trust, and lower engagement levels.</p>
     </div>
 
     <!-- 04 Empathise Phase -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Getting to the root of the problem</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">We started by interviewing the CEO to understand the brand's needs. We began by gauging the brand identity, asking questions like, "if your company was a person, what car would they drive?", and then moved onto questions regarding his goals and current results.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Getting to the root of the problem</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">We started by interviewing the CEO to understand the brand's needs. We began by gauging the brand identity, asking questions like, "if your company was a person, what car would they drive?", and then moved onto questions regarding his goals and current results.</p>
 
       <!-- Client interview findings -->
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">From the interview, we found that the brand tone they were aiming for was clean, affordable, and "a bit boring" (as said by the CEO) and the main goal was to drive consultation bookings. The target audience was small to medium-sized Canadian businesses with high-value transactions, looking for a service that felt simple, professional, and affordable.</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">From the interview, we found that the brand tone they were aiming for was clean, affordable, and "a bit boring" (as said by the CEO) and the main goal was to drive consultation bookings. The target audience was small to medium-sized Canadian businesses with high-value transactions, looking for a service that felt simple, professional, and affordable.</p>
 
       <!-- What users said -->
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">After the interview, we conducted three HCI tests by giving users Parpro's website. Here's what they said:</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">After the interview, we conducted three HCI tests by giving users Parpro's website. Here's what they said:</p>
       <div style="display:flex;flex-direction:column;gap:var(--space-2);margin-bottom:var(--space-8);">
         <div style="display:flex;align-items:flex-end;gap:var(--space-2);">
           <div style="background:#218AFF;border-radius:var(--r-md);border-bottom-left-radius:4px;padding:var(--space-3) var(--space-4);max-width:72%;">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--c-on-accent);line-height:1.55;margin:0;">I don't see the difference between this and other consulting companies. It is not special to me.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--c-on-accent);line-height:1.55;margin:0;">I don't see the difference between this and other consulting companies. It is not special to me.</p>
           </div>
         </div>
         <div style="display:flex;align-items:flex-end;gap:var(--space-2);">
           <div style="background:#218AFF;border-radius:var(--r-md);border-bottom-left-radius:4px;padding:var(--space-3) var(--space-4);max-width:72%;">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--c-on-accent);line-height:1.55;margin:0;">This looks like a scam or a fake company.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--c-on-accent);line-height:1.55;margin:0;">This looks like a scam or a fake company.</p>
           </div>
         </div>
       </div>
 
       <!-- Main pain points -->
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">The main pain points our users had</h3>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">The main pain points our users had</h3>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);margin-bottom:var(--space-8);">
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">🤔 Where do I go?</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Users did not know where to tap to find specific information. Navigation offered no clear signals about where to look.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">🤔 Where do I go?</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Users did not know where to tap to find specific information. Navigation offered no clear signals about where to look.</p>
         </div>
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">💸 What about pricing?</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">No pricing information existed anywhere on the site, leaving users unable to self-qualify before reaching out.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">💸 What about pricing?</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">No pricing information existed anywhere on the site, leaving users unable to self-qualify before reaching out.</p>
         </div>
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">😰 How do I prepare?</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Users had no idea what to say for the consultation or what information to prepare, creating friction before first contact, or even deterring users from contacting at all.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">😰 How do I prepare?</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Users had no idea what to say for the consultation or what information to prepare, creating friction before first contact, or even deterring users from contacting at all.</p>
         </div>
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">🕵️ Is this legitimate?</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">The way the site was laid out made it appear like an untrustworthy establishment.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">🕵️ Is this legitimate?</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">The way the site was laid out made it appear like an untrustworthy establishment.</p>
         </div>
       </div>
 
       <!-- Competitive analysis -->
       <div style="border-top:1px solid var(--border);margin-bottom:var(--space-8);"></div>
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-3);line-height:1.35;">Competitive analysis</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-7);">We swept both large consulting firms and Canadian bookkeeping providers to understand what the better-performing sites had in common: they made it easy to understand what they offered and why to trust them. Parpro's existing site did neither.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-3);line-height:1.35;">Competitive analysis</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-7);">We swept both large consulting firms and Canadian bookkeeping providers to understand what the better-performing sites had in common: they made it easy to understand what they offered and why to trust them. Parpro's existing site did neither.</p>
       <div class="parpro-comp-logos" style="display:flex;gap:var(--space-8);align-items:center;justify-content:center;margin-bottom:var(--space-8);">
         <img loading="lazy" src="images/mckinsey.png" alt="McKinsey & Company" style="width:10%;display:block;object-fit:contain;">
         <img loading="lazy" src="images/bcg.png" alt="BCG" style="width:10%;display:block;object-fit:contain;">
@@ -1775,12 +1817,12 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
       <!-- Personas and empathy maps -->
       <div style="border-top:1px solid var(--border);margin-bottom:var(--space-8);"></div>
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-3);line-height:1.35;">User personas</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-6);">We then created personas to help with empathising. Meet Morgan S. Tanley and Bankuv Amir-Ika (no correlation with Morgan Stanley and the Bank of America, I promise), the most likely users of this service.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-3);line-height:1.35;">User personas</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-6);">We then created personas to help with empathising. Meet Morgan S. Tanley and Bankuv Amir-Ika (no correlation with Morgan Stanley and the Bank of America, I promise), the most likely users of this service.</p>
       <div class="parpro-personas-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:0;">
         <!-- Morgan collapsible -->
         <div style="border-radius:var(--r-md);overflow:hidden;">
-          <button onclick="var e=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',e?'false':'true');this.nextElementSibling.style.display=e?'none':'block';this.querySelector('.chev').style.transform=e?'rotate(0deg)':'rotate(180deg)';this.parentElement.style.outline=e?'none':'1px solid var(--border)';" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5);background:var(--bg2);border:none;cursor:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);text-align:left;">
+          <button onclick="var e=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',e?'false':'true');this.nextElementSibling.style.display=e?'none':'block';this.querySelector('.chev').style.transform=e?'rotate(0deg)':'rotate(180deg)';this.parentElement.style.outline=e?'none':'1px solid var(--border)';" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5);background:var(--bg2);border:none;cursor:none;font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);text-align:left;">
             <span>Morgan S. Tanley</span>
             <span class="chev" style="display:inline-block;transition:transform .22s;font-size:var(--t7);">&#8964;</span>
           </button>
@@ -1791,7 +1833,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
         </div>
         <!-- Bankuv collapsible -->
         <div style="border-radius:var(--r-md);overflow:hidden;">
-          <button onclick="var e=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',e?'false':'true');this.nextElementSibling.style.display=e?'none':'block';this.querySelector('.chev').style.transform=e?'rotate(0deg)':'rotate(180deg)';this.parentElement.style.outline=e?'none':'1px solid var(--border)';" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5);background:var(--bg2);border:none;cursor:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);text-align:left;">
+          <button onclick="var e=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',e?'false':'true');this.nextElementSibling.style.display=e?'none':'block';this.querySelector('.chev').style.transform=e?'rotate(0deg)':'rotate(180deg)';this.parentElement.style.outline=e?'none':'1px solid var(--border)';" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-5);background:var(--bg2);border:none;cursor:none;font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);text-align:left;">
             <span>Bankuv Amir-Ika</span>
             <span class="chev" style="display:inline-block;transition:transform .22s;font-size:var(--t7);">&#8964;</span>
           </button>
@@ -1806,27 +1848,27 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 05 Define Phase -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Starting the redesign</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">With research complete, we identified three specific things to prioritise for the redesign.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Starting the redesign</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">With research complete, we identified three specific things to prioritise for the redesign.</p>
 
       <!-- Idea breakdown -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);margin-bottom:var(--space-8);">
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Build trust</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Surface real client testimonials, remove misleading site elements, and clarify the contact form.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Build trust</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Surface real client testimonials, remove misleading site elements, and clarify the contact form.</p>
         </div>
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Create distinction</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Redesign the logo and visual identity, add purposeful animation, and replace stock imagery with elevated photography.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Create distinction</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Redesign the logo and visual identity, add purposeful animation, and replace stock imagery with elevated photography.</p>
         </div>
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Clarify information</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Restructure navigation and content hierarchy, label tools and partners clearly, and replace article carousel with vertical scroll.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Clarify information</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Restructure navigation and content hierarchy, label tools and partners clearly, and replace article carousel with vertical scroll.</p>
         </div>
       </div>
 
       <!-- User flows -->
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">During the client interview, the founder noted that the two main ways people arrive on the site are through searching directly for a bookkeeping consultation, and through discovering one of Parpro's finance articles. We designed a separate user flow for each path.</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">During the client interview, the founder noted that the two main ways people arrive on the site are through searching directly for a bookkeeping consultation, and through discovering one of Parpro's finance articles. We designed a separate user flow for each path.</p>
       <div style="display:flex;flex-direction:column;gap:var(--space-3);">
         <img loading="lazy" src="images/readarticles.png" alt="User flow — read articles to booking" style="width:100%;display:block;">
         <img loading="lazy" src="images/bookconsult.png" alt="User flow — book a consultation" style="width:100%;display:block;">
@@ -1835,51 +1877,51 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 06 Ideate -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Logo, design system, and animation brainstorming</h3>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Logo, design system, and animation brainstorming</h3>
 
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Logo redesign</p>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">We explored several logo directions, looking for something more modern that still carried the clean, professional character of the brand. The final choice was selected for its friendliness and openness while still capturing the founder's original vision.</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Logo redesign</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">We explored several logo directions, looking for something more modern that still carried the clean, professional character of the brand. The final choice was selected for its friendliness and openness while still capturing the founder's original vision.</p>
       <div style="margin-bottom:var(--space-8);">
         <img loading="lazy" src="images/parprologo.png" alt="Old logo vs new logo — Parpro" style="width:100%;border-radius:var(--r-md);display:block;">
       </div>
 
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Design system</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Design system</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-8);">
         <img loading="lazy" src="images/parprotype.png" alt="Parpro typography" style="width:100%;border-radius:var(--r-md);display:block;">
         <img loading="lazy" src="images/parprotype2.png" alt="Parpro typography 2" style="width:100%;border-radius:var(--r-md);display:block;">
       </div>
 
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Design components</p>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">The component library covered the logo, navigation bar, information sections, services boxes, CTA buttons, and social media icons, so we could maintain consistency across the design.</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Design components</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">The component library covered the logo, navigation bar, information sections, services boxes, CTA buttons, and social media icons, so we could maintain consistency across the design.</p>
       <img loading="lazy" src="images/parprosystem.png" alt="Parpro design components" style="width:100%;border-radius:var(--r-md);display:block;margin-bottom:var(--space-8);">
 
 
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Low fidelity wireframes</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Low fidelity wireframes</p>
       <img loading="lazy" src="images/lofiparpro.png" alt="Low fidelity wireframes — Parpro" style="width:100%;display:block;">
     </div>
 
     <!-- 07 Design -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-8);line-height:1.35;">The redesign across every page</h3>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-8);line-height:1.35;">The redesign across every page</h3>
 
       <!-- Before/after rows -->
       <div style="display:flex;flex-direction:column;gap:0;margin-bottom:0;">
 
         <!-- Home page -->
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">Home page</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">Home page</p>
           <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);">
             <button onclick="baPick(this,'home','after')" data-ba="home" data-panel="after" class="ba-tab ba-on">After</button>
             <button onclick="baPick(this,'home','before')" data-ba="home" data-panel="before" class="ba-tab">Before</button>
           </div>
           <div data-ba-panel="home-after">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Services, testimonials, and the &#8220;Why Us&#8221; section are redesigned with clear visual hierarchy and consistent branding.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Services, testimonials, and the &#8220;Why Us&#8221; section are redesigned with clear visual hierarchy and consistent branding.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <video src="images/homenew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 1.5px 1px 0);"></video>
             </div>
           </div>
           <div data-ba-panel="home-before" style="display:none;">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">An immediate popup distracted and overwhelmed users on arrival. The testimonials and &#8220;Why Us&#8221; sections lacked both content and aesthetic appeal.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">An immediate popup distracted and overwhelmed users on arrival. The testimonials and &#8220;Why Us&#8221; sections lacked both content and aesthetic appeal.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <img loading="lazy" src="images/homeold.png" alt="Home page — before" style="width:100%;display:block;">
             </div>
@@ -1888,19 +1930,19 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
         <!-- About us -->
         <div style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-top:var(--space-10);">
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">About Us</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">About Us</p>
           <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);">
             <button onclick="baPick(this,'about','after')" data-ba="about" data-panel="after" class="ba-tab ba-on">After</button>
             <button onclick="baPick(this,'about','before')" data-ba="about" data-panel="before" class="ba-tab">Before</button>
           </div>
           <div data-ba-panel="about-after">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">The page opens with an animation of &#8220;Our Ask&#8221; and &#8220;Our Guarantee&#8221;. On scroll, the company story and values are clearly legible. The page ends with a call to action to book a consultation.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">The page opens with an animation of &#8220;Our Ask&#8221; and &#8220;Our Guarantee&#8221;. On scroll, the company story and values are clearly legible. The page ends with a call to action to book a consultation.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <video src="images/aboutnew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 1.5px 1px 0);"></video>
             </div>
           </div>
           <div data-ba-panel="about-before" style="display:none;">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Static visuals and stock images made the page feel generic. Company values were not listed and descriptions were too generalised to convey any personality.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Static visuals and stock images made the page feel generic. Company values were not listed and descriptions were too generalised to convey any personality.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <img loading="lazy" src="images/aboutold.png" alt="About us page — before" style="width:100%;display:block;">
             </div>
@@ -1909,19 +1951,19 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
         <!-- Services -->
         <div style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-top:var(--space-10);">
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">Services</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">Services</p>
           <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);">
             <button onclick="baPick(this,'services','after')" data-ba="services" data-panel="after" class="ba-tab ba-on">After</button>
             <button onclick="baPick(this,'services','before')" data-ba="services" data-panel="before" class="ba-tab">Before</button>
           </div>
           <div data-ba-panel="services-after">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Information laid out in bite-sized squares. Logos are clearly labelled as tools the company uses.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Information laid out in bite-sized squares. Logos are clearly labelled as tools the company uses.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <video src="images/servicesnew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 0 1px 0);"></video>
             </div>
           </div>
           <div data-ba-panel="services-before" style="display:none;">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Company logos were listed in a horizontal line with no indication of whether they were sponsors, partners, or tools.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Company logos were listed in a horizontal line with no indication of whether they were sponsors, partners, or tools.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <img loading="lazy" src="images/servicesold.png" alt="Services page — before" style="width:100%;display:block;">
             </div>
@@ -1930,19 +1972,19 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
         <!-- Resources -->
         <div style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-top:var(--space-10);">
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">Resources</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">Resources</p>
           <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);">
             <button onclick="baPick(this,'resources','after')" data-ba="resources" data-panel="after" class="ba-tab ba-on">After</button>
             <button onclick="baPick(this,'resources','before')" data-ba="resources" data-panel="before" class="ba-tab">Before</button>
           </div>
           <div data-ba-panel="resources-after">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Carousel removed in favour of vertical scroll, which increases retention rates and usability. Articles are consistent in typography and end with a call to action to subscribe to the newsletter. An audio icon was added so users who are hard of hearing can have articles read aloud.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Carousel removed in favour of vertical scroll, which increases retention rates and usability. Articles are consistent in typography and end with a call to action to subscribe to the newsletter. An audio icon was added so users who are hard of hearing can have articles read aloud.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <video src="images/resourcesnew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 0 1px 0);"></video>
             </div>
           </div>
           <div data-ba-panel="resources-before" style="display:none;">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Articles were displayed in a carousel, which is poor for engagement retention. Each article was also inconsistent with the others in typography, with hierarchy issues throughout.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">Articles were displayed in a carousel, which is poor for engagement retention. Each article was also inconsistent with the others in typography, with hierarchy issues throughout.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <img loading="lazy" src="images/resourcesold.png" alt="Resources page — before" style="width:100%;display:block;">
             </div>
@@ -1951,19 +1993,19 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
         <!-- Contact us -->
         <div style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-top:var(--space-10);">
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">Contact Us</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--text-faint);margin-bottom:var(--space-3);">Contact Us</p>
           <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-5);">
             <button onclick="baPick(this,'contact','after')" data-ba="contact" data-panel="after" class="ba-tab ba-on">After</button>
             <button onclick="baPick(this,'contact','before')" data-ba="contact" data-panel="before" class="ba-tab">Before</button>
           </div>
           <div data-ba-panel="contact-after">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">The form includes clear directions. The misleading map was removed entirely, making the brand look more legitimate and user-friendly.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">The form includes clear directions. The misleading map was removed entirely, making the brand look more legitimate and user-friendly.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <video src="images/contactnew.mov" loop muted playsinline class="autoplay-on-view" style="width:100%;display:block;clip-path:inset(0 0 1px 0);"></video>
             </div>
           </div>
           <div data-ba-panel="contact-before" style="display:none;">
-            <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">The form assumed users knew how to fill it in. A map at the bottom displayed a random coordinate not registered to a real building, causing confusion and distrust.</p>
+            <p style="font-family:var(--ff-body);font-size:var(--t6);color:var(--text-soft);line-height:1.8;margin-bottom:var(--space-4);">The form assumed users knew how to fill it in. A map at the bottom displayed a random coordinate not registered to a real building, causing confusion and distrust.</p>
             <div style="overflow:hidden;margin-bottom:0;">
               <img loading="lazy" src="images/contactold.png" alt="Contact us page — before" style="width:100%;display:block;">
             </div>
@@ -1976,30 +2018,30 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 08 Results -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-8);line-height:1.35;">What the redesign achieved</h3>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-8);line-height:1.35;">What the redesign achieved</h3>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);">
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Higher user retention</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">By reducing redundant text, stock images, and unneeded features, and adding non-distracting animations, users stay engaged on the site for longer.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Higher user retention</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">By reducing redundant text, stock images, and unneeded features, and adding non-distracting animations, users stay engaged on the site for longer.</p>
         </div>
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">More accessible experience</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">The redesigned site is more intuitive for people who may not be tech-literate, making the experience easier and more inclusive across multiple groups of users.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">More accessible experience</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">The redesigned site is more intuitive for people who may not be tech-literate, making the experience easier and more inclusive across multiple groups of users.</p>
         </div>
         <div>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Friendlier and trustworthy brand</p>
-          <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Parpro now has a hint of personality while maintaining a professional, neat brand identity. More cohesion in the branding gives potential clients more reasons to trust the company.</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-2);">Friendlier and trustworthy brand</p>
+          <p style="font-family:var(--ff-body);font-size:var(--t7);color:var(--text-soft);line-height:1.65;">Parpro now has a hint of personality while maintaining a professional, neat brand identity. More cohesion in the branding gives potential clients more reasons to trust the company.</p>
         </div>
       </div>
     </div>
 
     <!-- 09 Reflections -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">What this project taught me</h3>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Designing for an audience you are not</p>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">I have never used a bookkeeping service before so this project really stressed the empathy part in empathetic design. Learning how to put on not only the potential user's shoes, but also the founder's shoes, meant taking extra time to figure out how to align the business goals with what would best resonate with a potential customer.</p>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Branding</p>
-      <p style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">This was my first time being told by a client that they want their brand and website to be "a bit boring", which really taught me how to assess already existing brands so I could design towards what they wanted their image to be like. The time we spent prepping questions for the founder before our preliminary meeting and the meeting itself was a crucial part in learning about his vision, and the process of asking <em>good questions</em> is something that I will carry forward into future branding and design projects.</p>
+      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">What this project taught me</h3>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Designing for an audience you are not</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">I have never used a bookkeeping service before so this project really stressed the empathy part in empathetic design. Learning how to put on not only the potential user's shoes, but also the founder's shoes, meant taking extra time to figure out how to align the business goals with what would best resonate with a potential customer.</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Branding</p>
+      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">This was my first time being told by a client that they want their brand and website to be "a bit boring", which really taught me how to assess already existing brands so I could design towards what they wanted their image to be like. The time we spent prepping questions for the founder before our preliminary meeting and the meeting itself was a crucial part in learning about his vision, and the process of asking <em>good questions</em> is something that I will carry forward into future branding and design projects.</p>
     </div>
 
     <div style="padding-top:0;margin-left:-75px;margin-right:-75px;">
