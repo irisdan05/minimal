@@ -247,6 +247,8 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .sc-paper{position:relative;width:100%;border-radius:0;overflow:hidden;}
 .sc-img{transition:transform .3s ease;}
 .sc-card:hover .sc-img{transform:translateY(-4px);}
+/* locked cards stay still on hover (no bounce/lift) */
+.home-cases .sc-card.sc-locked:hover,.sc-card.sc-locked:hover .sc-img,.sc-card.sc-locked:hover .sc-mockup{transform:none !important;}
 .sc-tape{display:none;}
 .sc-tape-text{display:none;}
 .sc-corners{display:none;}
@@ -1019,6 +1021,9 @@ nav .nav-logo{display:block;font-size:var(--fs-display);font-weight:500;letter-s
 .cs-page .csx-panel>.reveal:not(.cs-hero-top):not(.cs-meta-row){margin-bottom:var(--space-10) !important;}
 .cs-page .csx-panel>.reveal+.reveal[style*="border-top"]:not(.cs-meta-row){padding-top:var(--space-10) !important;}
 .cs-page .csx-divider{margin:var(--space-10) 0 !important;}
+/* case studies: every section opens with an eyebrow; the problem statement reads as a callout */
+.cs-eyebrow{font-family:var(--ff-body);font-size:var(--fs-sm) !important;line-height:1.2;letter-spacing:var(--tracking);color:var(--c-accent) !important;margin:0 0 var(--space-3) !important;}
+.cs-problem{font-family:var(--ff-body);font-size:var(--fs-lg,1.25rem) !important;line-height:1.45 !important;color:var(--c-ink) !important;max-width:46em;}
 /* a section's last item never adds its own margin — the section owns the gap to the next line */
 .cs-page .csx-panel>.reveal :last-child{margin-bottom:0 !important;}
 .cs-page .csx-panel>div:has(>.cs-pager){padding-top:0 !important;margin-top:auto !important;}
@@ -1548,16 +1553,18 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 01 Overview -->
     <div id="cs-s01" class="reveal" style="margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Overview</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">AI studying platform for university students</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">Lumeno is a study platform for university students with AI chat, flashcards, exam mode, summaries, and a digital notebook. However, beta users would consistently flag that the chat was hard to read, especially for people with ADHD or dyslexia.</p>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">A few weeks into my internship, I was tasked with running an accessibility audit to tackle this issue.</p>
       <div class="csx-divider" style="border-top:1px solid var(--border);"></div>
-      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-top:var(--space-8);margin-bottom:var(--space-6);line-height:1.35;">🔍 Problem</h3>
-      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Lumeno's AI chat offers no reading customisation, giving students no way to adapt the features to their needs, leading to difficult and unusable product experiences.</p>
+      <p class="cs-eyebrow">Problem</p>
+      <p class="cs-problem" style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Lumeno's AI chat offers no reading customisation, giving students no way to adapt the features to their needs, leading to difficult and unusable product experiences.</p>
     </div>
 
     <!-- 03 Audit -->
     <div id="cs-s03" class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Audit</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Finding what the product was getting wrong</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">I ran a WCAG 2.2 compliance review, a heuristic evaluation of the app's key flows, and looked into the beta feedback given to us. From the feedback, I knew to prioritise tackling the wall of text the product would produce, as it was the most emphasised problem from the users.</p>
 
@@ -1604,6 +1611,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 04 What we shipped -->
     <div id="cs-s04" class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Solution</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Solution</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">The audit made clear that students had no control over how information was presented to them. The solution was to give that control back directly through in-app features.</p>
 
@@ -1639,6 +1647,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 05 Reflections -->
     <div id="cs-s05" class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:0;">
+      <p class="cs-eyebrow">Reflections</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">What this project taught me</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Accessibility should be kept front and centre</p>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">As I was given the accessibility audit task after most of the main product was already built out, it made me realise how often accessibility goes overlooked in products. My main takeaway is that accessibility should be looked at in the early stages of building a product, and not as an add-on.</p>
@@ -1687,13 +1696,21 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 01 Overview -->
     <div id="sdm-s01" class="reveal" style="margin-bottom:var(--space-11);">
+      <p class="cs-eyebrow">Overview</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Instagram DMs were never built for scale</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">Instagram DMs rely on Instagram's inbox as their primary sales channel. The native inbox is flat, chronological, and completely unaware of where any given lead stands in a funnel. Coaches hire DM setters (people who make sales or set up sales calls using direct messaging on social media platforms) to manage the volume, but those setters had no real tooling to work with. The lack of pipeline visibility and assistance in reducing cognitive load make it painful to stage hundreds of conversations a day sustainably.</p>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);">SetDM AI is a funnel-based workspace built with AI, made specifically for DM setters to make sales faster and without burning out.</p>
     </div>
 
+    <!-- 02 Problem -->
+    <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-11);">
+      <p class="cs-eyebrow">Problem</p>
+      <p class="cs-problem">DM setters juggle hundreds of conversations a day in an inbox with no pipeline visibility and nothing to reduce cognitive load, making it slow, error-prone, and impossible to sustain without burning out.</p>
+    </div>
+
     <!-- 02 My Role -->
     <div id="sdm-s02" class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-11);">
+      <p class="cs-eyebrow">My role</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Founding Product Designer</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-7);">I spearheaded the product design, working in close partnership with the founder and engineer. The founder brought deep fitness industry and sales knowledge which shaped how we approached research and prioritisation throughout the design. The full initial product was completed within a month due to the high demand and limited time.</p>
     </div>
@@ -1750,6 +1767,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 01 Overview -->
     <div class="reveal" style="margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Overview</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">A bookkeeping firm with an identity crisis</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-5);">Parpro Consulting Ltd. is a Canadian bookkeeping agency serving small to medium-sized businesses. Their existing website struggled to establish trust or stand out; the over-usage of generic stock photography, static layouts, inconsistent branding, and unclear information made the site feel illegitimate and wasn't converting as well as it needed to.</p>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);">Over 2.5 days, we did a full website and brand identity redesign for the FLUI Design Competition.</p>
@@ -1757,12 +1775,13 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 02 Problem -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
-      <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">🔍 Problem</h3>
-      <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Parpro's current website design suffers from a weak establishment of brand identity and a lack of uniqueness, which results in diminished bookings, reduced trust, and lower engagement levels.</p>
+      <p class="cs-eyebrow">Problem</p>
+      <p class="cs-problem" style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:0;">Parpro's current website design suffers from a weak establishment of brand identity and a lack of uniqueness, which results in diminished bookings, reduced trust, and lower engagement levels.</p>
     </div>
 
     <!-- 04 Empathise Phase -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Empathise</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Getting to the root of the problem</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">We started by interviewing the CEO to understand the brand's needs. We began by gauging the brand identity, asking questions like, "if your company was a person, what car would they drive?", and then moved onto questions regarding his goals and current results.</p>
 
@@ -1848,6 +1867,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 05 Define Phase -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Define</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Starting the redesign</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">With research complete, we identified three specific things to prioritise for the redesign.</p>
 
@@ -1877,6 +1897,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 06 Ideate -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Ideate</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">Logo, design system, and animation brainstorming</h3>
 
       <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Logo redesign</p>
@@ -1902,6 +1923,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 07 Design -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Design</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-8);line-height:1.35;">The redesign across every page</h3>
 
       <!-- Before/after rows -->
@@ -2018,6 +2040,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 08 Results -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Results</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-8);line-height:1.35;">What the redesign achieved</h3>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);">
         <div>
@@ -2037,6 +2060,7 @@ nav .nav-logo:hover .nav-flower{transform:rotate(-10deg);}
 
     <!-- 09 Reflections -->
     <div class="reveal" style="border-top:1px solid var(--border);padding-top:var(--space-10);margin-bottom:var(--space-10);">
+      <p class="cs-eyebrow">Reflections</p>
       <h3 style="font-family:var(--ff-body);letter-spacing:var(--tracking);font-size:calc(var(--t4) * 1.1);font-weight:400;color:var(--ink);margin-bottom:var(--space-6);line-height:1.35;">What this project taught me</h3>
       <p style="font-family:var(--ff-body);font-size:var(--t6);font-weight:500;color:var(--ink);margin-bottom:var(--space-3);">Designing for an audience you are not</p>
       <p style="font-family:var(--ff-body);font-size:var(--t6);line-height:1.8;color:var(--text-soft);margin-bottom:var(--space-8);">I have never used a bookkeeping service before so this project really stressed the empathy part in empathetic design. Learning how to put on not only the potential user's shoes, but also the founder's shoes, meant taking extra time to figure out how to align the business goals with what would best resonate with a potential customer.</p>
