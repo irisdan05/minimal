@@ -1,7 +1,7 @@
 #!/bin/sh
-# Publish the minimal portfolio to BOTH sites in one go:
-#   its.irisdan.xyz  (this repo, irisdan05/minimal)
-#   irisdan.xyz      (../designportfolio, irisdan05/designportfolio)
+# Publish the minimal portfolio to irisdan.xyz (../designportfolio, irisdan05/designportfolio).
+# its.irisdan.xyz (this repo) now hosts the OLD classic site (tag classic-site) and is
+# not touched by this script.
 # Usage: ./publish.sh "commit message"
 set -e
 MSG=${1:-"Update minimal portfolio"}
@@ -9,13 +9,7 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 MAIN="$HERE/../designportfolio"
 PAGES="index.html 404.html about/index.html playground/index.html lumeno/index.html setdm/index.html parpro/index.html"
 
-python3 "$HERE/build.py"
 python3 "$HERE/build.py" --main
-
-cd "$HERE"
-git add -A
-git diff --cached --quiet || git commit -q -m "$MSG"
-git push -q origin main
 
 cd "$MAIN"
 # only the built pages plus any images/fonts the page uses; never .DS_Store or private files
@@ -28,4 +22,4 @@ if refs: subprocess.run(['git', 'add', '--'] + refs, check=True)
 PY
 git diff --cached --quiet || git commit -q -m "$MSG"
 git push -q origin main
-echo "published to its.irisdan.xyz and irisdan.xyz"
+echo "published to irisdan.xyz"
