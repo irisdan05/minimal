@@ -406,8 +406,8 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
   .about-image-wrap{position:static;padding-bottom:0;order:-1;overflow:hidden;}
   .about-photo-frame{width:100%;}
   .about-photo-frame img{aspect-ratio:4/3;object-position:10% calc(25% - 15px);}
-  #vendingMachine{display:none;}
-  #switchKeychain{display:none;}
+  #vendingMachine{display:none !important;}
+  #switchKeychain{display:none !important;}
   #switchKeychainMobile{display:flex !important;}
   #trinketsCaption{display:none !important;}
   .about-label{font-size:clamp(1.4rem,5.5vw,1.875rem);margin-bottom:24px;}
@@ -659,6 +659,10 @@ nav.nav-on-dark .nav-links a::after{background:rgba(255,255,255,0.6);}
 .webring-tip a:hover{color:var(--purple-text);}
 @media(hover:hover){.webring-hub:hover .webring-tip{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0);transition:opacity .2s,transform .2s,visibility 0s;}}
 .webring-hub:focus-within .webring-tip,.webring-hub.open .webring-tip{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0);transition:opacity .2s,transform .2s,visibility 0s;}
+</style>
+<style>
+/* juice dispenser: desktop with a real cursor and room for it only (fractional widths covered too) */
+@media (max-width:1100.98px),(hover:none),(pointer:coarse){#vendingMachine{display:none !important;}}
 </style>
 </head>
 <body>
